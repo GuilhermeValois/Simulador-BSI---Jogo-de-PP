@@ -1,0 +1,159 @@
+[
+    {
+        "nome": "Projeto Interdisciplinar para Sistemas de Informação 1",
+        "periodo": 1,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Fundamentos Matemáticos para Sistemas de Informação 1",
+        "periodo": 1,
+        "categoria": "matematica_logica"
+    },
+    {
+        "nome": "Princípios de Programação",
+        "periodo": 1,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Sustentabilidade em Sistemas de Informação",
+        "periodo": 1,
+        "categoria": "sistemas_informacao"
+    },
+    {
+        "nome": "Introdução à Administração",
+        "periodo": 1,
+        "categoria": "gestao"
+    },
+
+    {
+        "nome": "Projeto Interdisciplinar para Sistemas de Informação 2",
+        "periodo": 2,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Fundamentos Matemáticos para Sistemas de Informação 2",
+        "periodo": 2,
+        "categoria": "matematica_logica"
+    },
+    {
+        "nome": "Fundamentos de Problemas Computacionais 1",
+        "periodo": 2,
+        "categoria": "matematica_logica"
+    },
+    {
+        "nome": "Elementos de Sistemas Computacionais",
+        "periodo": 2,
+        "categoria": "infraestrutura"
+    },
+    {
+        "nome": "Fundamentos de Sistemas de Informação",
+        "periodo": 2,
+        "categoria": "sistemas_informacao"
+    },
+
+    {
+        "nome": "Projeto Interdisciplinar para Sistemas de Informação 3",
+        "periodo": 3,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Desenvolvimento de Sistemas de Informação",
+        "periodo": 3,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Engenharia para Sistemas de Informação 1",
+        "periodo": 3,
+        "categoria": "sistemas_informacao"
+    },
+    {
+        "nome": "Introdução ao Armazenamento e Análise de Dados",
+        "periodo": 3,
+        "categoria": "dados"
+    },
+
+    {
+        "nome": "Projeto Interdisciplinar para Sistemas de Informação 4",
+        "periodo": 4,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Princípios de Software Básico",
+        "periodo": 4,
+        "categoria": "infraestrutura"
+    },
+    {
+        "nome": "Fundamentos de Problemas Computacionais 2",
+        "periodo": 4,
+        "categoria": "matematica_logica"
+    },
+    {
+        "nome": "Sistemas de Informação na Internet",
+        "periodo": 4,
+        "categoria": "sistemas_informacao"
+    },
+
+    {
+        "nome": "Projeto de Desenvolvimento Tecnológico para o Mundo 1",
+        "periodo": 5,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Segurança e Auditoria de Sistemas",
+        "periodo": 5,
+        "categoria": "infraestrutura"
+    },
+    {
+        "nome": "Engenharia para Sistemas de Informação 2",
+        "periodo": 5,
+        "categoria": "sistemas_informacao"
+    },
+    {
+        "nome": "Empreendedorismo e Inovação",
+        "periodo": 5,
+        "categoria": "gestao"
+    },
+
+    {
+        "nome": "Projeto de Desenvolvimento Tecnológico para o Mundo 2",
+        "periodo": 6,
+        "categoria": "programacao"
+    },
+    {
+        "nome": "Cálculo N1",
+        "periodo": 6,
+        "categoria": "matematica_logica"
+    },
+    {
+        "nome": "Engenharia para Sistemas de Informação 3",
+        "periodo": 6,
+        "categoria": "sistemas_informacao"
+    },
+    {
+        "nome": "Modelagem de Dados",
+        "periodo": 6,
+        "categoria": "dados"
+    },
+
+    {
+        "nome": "Princípios da Teoria da Computação",
+        "periodo": 7,
+        "categoria": "matematica_logica"
+    },
+    {
+        "nome": "Estatística Aplicada à Análise de Dados",
+        "periodo": 7,
+        "categoria": "dados"
+    },
+
+    {
+        "nome": "Gestão do Conhecimento",
+        "periodo": 8,
+        "categoria": "gestao"
+    },
+    {
+        "nome": "Fundamentos de Estratégia Competitiva",
+        "periodo": 8,
+        "categoria": "gestao"
+    }
+]

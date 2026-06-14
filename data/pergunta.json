@@ -1,0 +1,583 @@
+[
+    {
+        "enunciado": "Qual estrutura é usada para tomar decisões em um programa?",
+        "alternativas": {"A":"for","B":"if","C":"while","D":"input"},
+        "categoria": "programacao",
+        "resposta":"B"
+    },
+    {
+        "enunciado": "Qual estrutura é usada para repetir comandos?",
+        "alternativas": {"A":"loop","B":"return","C":"for","D":"print"},
+        "categoria": "programacao",
+        "resposta":"C"
+    },
+    {
+        "enunciado": "Qual destes é um tipo de dado numérico em Python?",
+        "alternativas": {"A":"int","B":"str","C":"list","D":"dict"},
+        "categoria": "programacao",
+        "resposta":"A"
+    },
+    {
+        "enunciado": "Qual função é usada para receber dados do usuário em Python?",
+        "alternativas": {"A":"print","B":"input","C":"read","D":"scan"},
+        "categoria": "programacao",
+        "resposta":"B"
+    },
+    {
+        "enunciado": "Qual operador representa igualdade em Python?",
+        "alternativas": {"A":"=","B":"!=","C":"==","D":"<>"},
+        "categoria": "programacao",
+        "resposta":"C"
+    },
+    {
+    "enunciado": "Qual palavra-chave é usada para definir uma função em Python?",
+    "alternativas": {
+        "A": "function",
+        "B": "func",
+        "C": "def",
+        "D": "lambda"
+        },
+    "categoria": "programacao",
+    "resposta": "C"
+    },
+    {
+    "enunciado": "Qual operador é utilizado para realizar o resto da divisão em Python?",
+    "alternativas": {
+        "A": "/",
+        "B": "//",
+        "C": "%",
+        "D": "**"
+        },
+    "categoria": "programacao",
+    "resposta": "C"
+    },
+    {
+    "enunciado": "Qual estrutura de dados em Python armazena pares chave-valor?",
+    "alternativas": {
+        "A": "list",
+        "B": "tuple",
+        "C": "set",
+        "D": "dict"
+        },
+    "categoria": "programacao",
+    "resposta": "D"
+    },
+    {
+    "enunciado": "Qual será a saída do código print(len('Python'))?",
+    "alternativas": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "Erro"
+        },
+    "categoria": "programacao",
+    "resposta": "B"
+    },
+    {
+    "enunciado": "Qual comando é usado para interromper imediatamente um laço de repetição?",
+    "alternativas": {
+        "A": "stop",
+        "B": "continue",
+        "C": "exit",
+        "D": "break"
+        },
+    "categoria": "programacao",
+    "resposta": "D"
+    },
+    {
+        "enunciado": "Se P = 'Está chovendo' e Q = 'Levarei guarda-chuva', qual conectivo representa 'Se está chovendo, então levarei guarda-chuva'?",
+        "alternativas": {
+            "A": "Conjunção (∧)",
+            "B": "Disjunção (∨)",
+            "C": "Implicação (→)",
+            "D": "Negação (¬)"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual é a interseção dos conjuntos A = {1,2,3,4} e B = {3,4,5,6}?",
+        "alternativas": {
+            "A": "{1,2}",
+            "B": "{3,4}",
+            "C": "{5,6}",
+            "D": "{1,2,5,6}"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Uma função é uma relação em que:",
+        "alternativas": {
+            "A": "Cada elemento do domínio possui exatamente uma imagem.",
+            "B": "Cada elemento do contradomínio possui exatamente uma imagem.",
+            "C": "Todo elemento possui duas imagens.",
+            "D": "O domínio é igual ao contradomínio."
+        },
+        "categoria": "matematica_logica",
+        "resposta": "A"
+    },
+    {
+        "enunciado": "Como é chamado um conjunto de vértices conectados por arestas?",
+        "alternativas": {
+            "A": "Matriz",
+            "B": "Grafo",
+            "C": "Função",
+            "D": "Proposição"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Se uma proposição P é verdadeira, qual é o valor lógico de ¬P?",
+        "alternativas": {
+            "A": "Verdadeiro",
+            "B": "Falso",
+            "C": "Indeterminado",
+            "D": "Depende da proposição"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Em um grafo simples, o grau de um vértice representa:",
+        "alternativas": {
+            "A": "A quantidade de grafos existentes.",
+            "B": "A quantidade de vértices adjacentes a ele.",
+            "C": "O número de componentes conexas.",
+            "D": "O número total de caminhos do grafo."
+        },
+        "categoria": "matematica_logica",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Considere a função f(x) = 2x + 1. Qual é o valor de f(3)?",
+        "alternativas": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual símbolo é utilizado para representar a união de conjuntos?",
+        "alternativas": {
+            "A": "∩",
+            "B": "∪",
+            "C": "⊂",
+            "D": "∈"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual das alternativas representa uma tautologia?",
+        "alternativas": {
+            "A": "P ∧ ¬P",
+            "B": "P → P",
+            "C": "P ∧ Q",
+            "D": "¬P ∨ Q"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Em teoria dos grafos, uma sequência de vértices conectados por arestas é chamada de:",
+        "alternativas": {
+            "A": "Passeio",
+            "B": "Caminho",
+            "C": "Trilha",
+            "D": "Circuito"
+        },
+        "categoria": "matematica_logica",
+        "resposta": "A"
+    },
+   {
+        "enunciado": "Em um banco de dados relacional, qual é a função de uma chave estrangeira?",
+        "alternativas": {
+            "A": "Criptografar registros",
+            "B": "Relacionar tabelas diferentes",
+            "C": "Excluir dados duplicados",
+            "D": "Criar backups automáticos"
+        },
+        "categoria": "dados",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual comando SQL é utilizado para consultar informações armazenadas em uma tabela?",
+        "alternativas": {
+            "A": "INSERT",
+            "B": "UPDATE",
+            "C": "SELECT",
+            "D": "DELETE"
+        },
+        "categoria": "dados",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Ao modelar um banco de dados para uma universidade, um aluno pode estar matriculado em várias disciplinas e uma disciplina pode possuir vários alunos. Esse relacionamento é do tipo:",
+        "alternativas": {
+            "A": "Um para um",
+            "B": "Um para muitos",
+            "C": "Muitos para muitos",
+            "D": "Nenhum dos anteriores"
+        },
+        "categoria": "dados",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual medida estatística é mais adequada para representar o valor central de um conjunto de dados muito afetado por valores extremos?",
+        "alternativas": {
+            "A": "Média aritmética",
+            "B": "Moda",
+            "C": "Mediana",
+            "D": "Amplitude"
+        },
+        "categoria": "dados",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual destes exemplos representa um atributo de uma entidade 'Professor' em um banco de dados?",
+        "alternativas": {
+            "A": "Ministrar",
+            "B": "Disciplina",
+            "C": "Nome",
+            "D": "Avaliar"
+        },
+        "categoria": "dados",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "O que significa a sigla SGBD?",
+        "alternativas": {
+            "A": "Sistema Geral de Banco de Dados",
+            "B": "Sistema Gerenciador de Banco de Dados",
+            "C": "Serviço Global de Backup de Dados",
+            "D": "Sistema de Geração de Big Data"
+        },
+        "categoria": "dados",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Em estatística, a moda corresponde:",
+        "alternativas": {
+            "A": "Ao valor que aparece com maior frequência",
+            "B": "Ao valor central dos dados ordenados",
+            "C": "À soma de todos os valores",
+            "D": "À diferença entre o maior e o menor valor"
+        },
+        "categoria": "dados",
+        "resposta": "A"
+    },
+    {
+        "enunciado": "No contexto de bancos de dados, a normalização tem como principal objetivo:",
+        "alternativas": {
+            "A": "Aumentar o tamanho das tabelas",
+            "B": "Evitar redundâncias e inconsistências",
+            "C": "Excluir registros automaticamente",
+            "D": "Substituir chaves primárias"
+        },
+        "categoria": "dados",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Considere a tabela ALUNO(id, nome, curso). Qual atributo é o melhor candidato para chave primária?",
+        "alternativas": {
+            "A": "Nome",
+            "B": "Curso",
+            "C": "id",
+            "D": "Todos igualmente"
+        },
+        "categoria": "dados",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual é a finalidade de uma consulta (query) em um banco de dados?",
+        "alternativas": {
+            "A": "Desligar o servidor",
+            "B": "Recuperar ou manipular informações",
+            "C": "Instalar um SGBD",
+            "D": "Compactar arquivos"
+        },
+        "categoria": "dados",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual componente é considerado o cérebro do computador?",
+        "alternativas": {"A":"HD","B":"CPU","C":"RAM","D":"Fonte"},
+        "categoria": "infraestrutura",
+        "resposta":"B"
+    },
+    {
+        "enunciado": "Qual memória perde seus dados ao desligar o computador?",
+        "alternativas": {"A":"SSD","B":"HD","C":"RAM","D":"Pendrive"},
+        "categoria": "infraestrutura",
+        "resposta":"C"
+    },
+    {
+        "enunciado": "Qual componente é responsável por executar instruções e realizar cálculos em um computador?",
+        "alternativas": {
+            "A": "Memória RAM",
+            "B": "HD",
+            "C": "Processador (CPU)",
+            "D": "Placa de vídeo"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual é a principal função de um firewall?",
+        "alternativas": {
+        "A": "Aumentar a velocidade do processador",
+        "B": "Proteger a rede controlando o tráfego de dados",
+        "C": "Armazenar arquivos temporários",
+        "D": "Realizar backups automáticos"
+        },
+    "categoria": "infraestrutura",
+    "resposta": "B"
+    },
+    {
+        "enunciado": "Qual é a principal função de um sistema operacional?",
+        "alternativas": {
+            "A": "Criar planilhas",
+            "B": "Gerenciar os recursos do computador",
+            "C": "Aumentar a velocidade da internet",
+            "D": "Desenvolver programas automaticamente"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual das opções abaixo representa um exemplo de malware?",
+        "alternativas": {
+            "A": "Firewall",
+            "B": "Roteador",
+            "C": "Trojan",
+            "D": "SSD"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual técnica consiste em tentar enganar usuários para obter informações confidenciais?",
+        "alternativas": {
+            "A": "Backup",
+            "B": "Phishing",
+            "C": "Virtualização",
+            "D": "Fragmentação"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual dispositivo é responsável por encaminhar pacotes entre diferentes redes?",
+        "alternativas": {
+            "A": "Switch",
+            "B": "Hub",
+            "C": "Roteador",
+            "D": "Access Point"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Em segurança da informação, a confidencialidade garante que:",
+        "alternativas": {
+            "A": "Os dados estejam sempre disponíveis",
+            "B": "Os dados não sejam alterados indevidamente",
+            "C": "Apenas pessoas autorizadas tenham acesso às informações",
+            "D": "Os sistemas funcionem sem falhas"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual das memórias abaixo é considerada volátil?",
+        "alternativas": {
+            "A": "SSD",
+            "B": "HD",
+            "C": "ROM",
+            "D": "RAM"
+        },
+        "categoria": "infraestrutura",
+        "resposta": "D"
+    },
+    {
+        "enunciado": "Qual das alternativas representa uma das funções clássicas da administração?",
+        "alternativas": {
+            "A": "Programar",
+            "B": "Planejar",
+            "C": "Depurar",
+            "D": "Formatar"
+        },
+        "categoria": "gestao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Uma startup identifica que existe demanda por um aplicativo para organizar estudos universitários. Essa atitude demonstra:",
+        "alternativas": {
+            "A": "Resistência à mudança",
+            "B": "Gestão burocrática",
+            "C": "Visão empreendedora",
+            "D": "Terceirização"
+        },
+        "categoria": "gestao",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Segundo Michael Porter, uma organização pode obter vantagem competitiva por meio de:",
+        "alternativas": {
+            "A": "Liderança em custos",
+            "B": "Redução da qualidade",
+            "C": "Eliminação da inovação",
+            "D": "Aumento da burocracia"
+        },
+        "categoria": "gestao",
+        "resposta": "A"
+    },
+    {
+        "enunciado": "A gestão do conhecimento busca principalmente:",
+        "alternativas": {
+            "A": "Esconder informações estratégicas",
+            "B": "Compartilhar e utilizar conhecimentos organizacionais",
+            "C": "Reduzir a comunicação entre equipes",
+            "D": "Substituir todos os funcionários por tecnologia"
+        },
+        "categoria": "gestao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual das opções representa uma característica importante de um empreendedor?",
+        "alternativas": {
+            "A": "Aversão total a mudanças",
+            "B": "Iniciativa para identificar oportunidades",
+            "C": "Dependência excessiva de instruções",
+            "D": "Falta de planejamento"
+        },
+        "categoria": "gestao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Ao definir metas e estabelecer ações para alcançá-las, um gestor está exercendo qual função administrativa?",
+        "alternativas": {
+            "A": "Controle",
+            "B": "Direção",
+            "C": "Planejamento",
+            "D": "Liderança"
+        },
+        "categoria": "gestao",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Em uma empresa, acompanhar os resultados obtidos e compará-los com os objetivos estabelecidos faz parte da função de:",
+        "alternativas": {
+            "A": "Controle",
+            "B": "Inovação",
+            "C": "Empreendedorismo",
+            "D": "Marketing"
+        },
+        "categoria": "gestao",
+        "resposta": "A"
+    },
+    {
+        "enunciado": "Qual dos exemplos abaixo representa conhecimento tácito?",
+        "alternativas": {
+            "A": "Manual de procedimentos da empresa",
+            "B": "Planilha de custos",
+            "C": "Experiência adquirida por um funcionário ao longo dos anos",
+            "D": "Relatório financeiro"
+        },
+        "categoria": "gestao",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual é o principal objetivo de um Sistema de Informação em uma organização?",
+        "alternativas": {
+            "A": "Substituir completamente os funcionários",
+            "B": "Apoiar a coleta, processamento e uso de informações para tomada de decisão",
+            "C": "Aumentar o consumo de energia elétrica",
+            "D": "Criar jogos eletrônicos"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Em Engenharia de Requisitos, um requisito funcional descreve:",
+        "alternativas": {
+            "A": "As restrições de orçamento do projeto",
+            "B": "Características visuais do sistema",
+            "C": "Os serviços e comportamentos que o sistema deve oferecer",
+            "D": "A formação acadêmica da equipe"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "C"
+    },
+    {
+        "enunciado": "Qual das alternativas representa um requisito não funcional?",
+        "alternativas": {
+            "A": "Permitir cadastro de usuários",
+            "B": "Emitir relatórios acadêmicos",
+            "C": "Realizar login no sistema",
+            "D": "Responder às solicitações em até 2 segundos"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "D"
+    },
+    {
+        "enunciado": "Ao modelar um sistema, a etapa de levantamento de requisitos tem como objetivo:",
+        "alternativas": {
+            "A": "Implementar o banco de dados",
+            "B": "Identificar as necessidades dos usuários e da organização",
+            "C": "Realizar testes automatizados",
+            "D": "Publicar o sistema na internet"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "No contexto de Sistemas de Informação, a sustentabilidade busca:",
+        "alternativas": {
+            "A": "Maximizar o descarte de equipamentos eletrônicos",
+            "B": "Utilizar a tecnologia considerando impactos sociais, econômicos e ambientais",
+            "C": "Eliminar totalmente o uso de computadores",
+            "D": "Substituir sistemas digitais por documentos impressos"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual das alternativas apresenta corretamente as etapas do ciclo de vida de desenvolvimento de sistemas?",
+        "alternativas": {
+            "A": "Planejamento, análise, desenvolvimento, testes e manutenção",
+            "B": "Compra, venda, divulgação e descarte",
+            "C": "Digitação, impressão e arquivamento",
+            "D": "Login, cadastro e logout"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "A"
+    },
+    {
+        "enunciado": "Um Sistema de Informação é composto por pessoas, processos e:",
+        "alternativas": {
+            "A": "Publicidade",
+            "B": "Hardware e software",
+            "C": "Redes sociais",
+            "D": "Apenas computadores"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "B"
+    },
+    {
+        "enunciado": "Qual é a principal vantagem da utilização de Sistemas de Informação nas organizações?",
+        "alternativas": {
+            "A": "Reduzir a necessidade de informações",
+            "B": "Automatizar tarefas e apoiar a tomada de decisões",
+            "C": "Eliminar completamente os custos operacionais",
+            "D": "Substituir todas as formas de comunicação"
+        },
+        "categoria": "sistemas_informacao",
+        "resposta": "B"
+    }
+]

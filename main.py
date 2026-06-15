@@ -1,6 +1,7 @@
 import json
 from disciplina import Disciplina
 from pergunta import Pergunta
+import pygame
 
 
 with open('disciplina.json', 'r', encoding = 'utf-8') as arq:

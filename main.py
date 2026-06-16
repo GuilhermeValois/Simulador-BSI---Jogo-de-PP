@@ -1,6 +1,6 @@
 import utils
-from disciplina import Disciplina
-from pergunta import Pergunta
+from jogador import Jogador
+import jogo
 import pygame
 import sys
 
@@ -19,6 +19,10 @@ perguntas_por_categoria = {
 for pergunta in lista_perguntas:
     perguntas_por_categoria[pergunta.categoria].append(pergunta)
 
+nome = utils.nome_jogador()
+jogador = Jogador(nome)
+
+jogo.jogar(jogador, lista_disciplinas, perguntas_por_categoria)
 pygame.init()
 
 # Configurações da janela

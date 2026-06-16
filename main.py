@@ -37,8 +37,8 @@ AZUL = (0, 120, 255)
 AMARELO = (255, 215, 0)
 
 # Fonte
-fonte_titulo = pygame.font.SysFont(None, 60)
-fonte_botao = pygame.font.SysFont(None, 40)
+fonte_titulo = pygame.font.Font("fontes/Starborn.ttf", 50)
+fonte_botao = pygame.font.Font("fontes/Starborn.ttf", 40)
 
 # Botão jogar
 botao_jogar = pygame.Rect(540, 300, 200, 80)
@@ -66,9 +66,9 @@ while rodando:
 
     # Desenhar título
     texto_titulo = fonte_titulo.render(
-        "SIMULADOR BSI",
+        "Aprova ou Reprova",
         True,
-        PRETO
+        AMARELO
     )
 
     tela.blit(texto_titulo, (470, 100))

@@ -70,14 +70,15 @@ def nome_jogador():
         else:
             return nome
         
-def disciplina_por_periodo(lista_de_disciplinas, periodo):
+def disciplina_por_periodo(lista_de_disciplinas, periodo, nome):
     disciplinas_do_periodo = []
     for disciplina in lista_de_disciplinas:
         if disciplina.periodo == periodo:
             disciplinas_do_periodo.append(disciplina)
     limpar()
     print("="*50)
-    print(Fore.LIGHTYELLOW_EX + "📚 Disciplinas do período:" + Style.RESET_ALL)
+    print(Fore.LIGHTYELLOW_EX + "👤 Aluno(a): " + Style.RESET_ALL + Fore.GREEN + f"{nome}" + Style.RESET_ALL)
+    print(Fore.LIGHTYELLOW_EX + f"📚 Disciplinas do {periodo}º período:" + Style.RESET_ALL)
     for disciplina in disciplinas_do_periodo:
         print(Fore.CYAN + f"- {disciplina.nome}" + Style.RESET_ALL)
     print("="*50)

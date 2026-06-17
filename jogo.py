@@ -13,11 +13,10 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
             print(Fore.RED + "❌ jubilado" + Style.RESET_ALL)
             return
         acertos = 0
-        disciplinas = utils.disciplina_por_periodo(lista_disciplinas, jogador.periodo)
+        disciplinas = utils.disciplina_por_periodo(lista_disciplinas, jogador.periodo, jogador.nome)
         if len(jogador.disciplinas_pendentes) > 0 and jogador.periodo <= 8:
             jogador.mostrar_pendencias()
             while True:
-                jogador.mostrar_pendencias()
                 pagar = input(Fore.CYAN + "Deseja pagar pendências? " + Style.RESET_ALL).strip().lower()
                 if pagar == 's':
                     disciplinas.extend(jogador.disciplinas_pendentes)
@@ -66,6 +65,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                     aprovacao = utils.fazer_tcc(perguntas_tcc)
                     if aprovacao == True:
                         print(Fore.GREEN + "🎉 Você se formou em BSI! Parabéns!" + Style.RESET_ALL)
+                        break
                     else:
                         print(Fore.RED + "😔 Seu TCC não foi aprovado! Tente de novo" + Style.RESET_ALL)
                         continue

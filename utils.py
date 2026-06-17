@@ -4,6 +4,8 @@ from disciplina import Disciplina
 from pergunta import Pergunta
 from colorama import Fore, Style
 
+def limpar():
+    os.system('cls')
 
 def carregar_disciplinas():
 
@@ -56,8 +58,9 @@ def carregar_tcc():
 
 def nome_jogador():
     while True:
+        limpar()
         print(Fore.YELLOW + "👋 Bem-vindo ao Aprova ou Reprova!\n" + Style.RESET_ALL)
-        nome = input("Qual o seu nome, Aluno?")
+        nome = input(Fore.LIGHTYELLOW_EX + "🤔 Qual o seu nome, Aluno? " + Style.RESET_ALL)
         if not nome:
             print(Fore.LIGHTYELLOW_EX + "⚠️ Nome não pode ser vazio" + Style.RESET_ALL)
         elif len(nome)>20:
@@ -72,9 +75,13 @@ def disciplina_por_periodo(lista_de_disciplinas, periodo):
     for disciplina in lista_de_disciplinas:
         if disciplina.periodo == periodo:
             disciplinas_do_periodo.append(disciplina)
-    print("Disciplinas:")
+    limpar()
+    print("="*50)
+    print(Fore.LIGHTYELLOW_EX + "📚 Disciplinas do período:" + Style.RESET_ALL)
     for disciplina in disciplinas_do_periodo:
-        print(f"{disciplina.nome}\n")
+        print(Fore.CYAN + f"- {disciplina.nome}" + Style.RESET_ALL)
+    print("="*50)
+    print("")
     return disciplinas_do_periodo
 
 def fazer_tcc(perguntas_tcc):    

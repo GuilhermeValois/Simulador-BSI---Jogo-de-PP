@@ -21,8 +21,8 @@ class Jogador:
         if len(self.disciplinas_pendentes) == 0:
             print(Fore.GREEN + "🎉 Sem pendências." + Style.RESET_ALL)
             return
-
-        print(Fore.BLUE + "Pendências:" + Style.RESET_ALL)
+        print("="*50)
+        print(Fore.LIGHTYELLOW_EX + "Pendências:" + Style.RESET_ALL)
 
         for disciplina in self.disciplinas_pendentes:
             print(f"{disciplina.nome}")

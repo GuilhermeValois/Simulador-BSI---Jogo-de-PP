@@ -3,6 +3,7 @@ from jogador import Jogador
 from disciplina import Disciplina
 from pergunta import Pergunta
 from colorama import Fore, Style
+import os
 
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
@@ -17,7 +18,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
             jogador.mostrar_pendencias()
             while True:
                 jogador.mostrar_pendencias()
-                pagar = input(Fore.BLUE + "Deseja pagar pendências?" + Style.RESET_ALL).strip().lower()
+                pagar = input(Fore.CYAN + "Deseja pagar pendências? " + Style.RESET_ALL).strip().lower()
                 if pagar == 's':
                     disciplinas.extend(jogador.disciplinas_pendentes)
                     jogador.disciplinas_pendentes = []
@@ -29,8 +30,8 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
         disciplinas_que_reprovou = []
         for disciplina in disciplinas:
             pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
-            pergunta.mostrar_pergunta()
-            resposta_do_usuario = input("").strip().upper()
+            pergunta.mostrar_pergunta(disciplina.nome)
+            resposta_do_usuario = input(Fore.LIGHTYELLOW_EX + "📝 Sua resposta: " + Style.RESET_ALL).strip().upper()
             acertou = pergunta.verificar_resposta(resposta_do_usuario)
             if acertou == True:
                 acertos += 1

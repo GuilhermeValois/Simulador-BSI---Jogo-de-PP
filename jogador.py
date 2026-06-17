@@ -23,4 +23,4 @@ class Jogador:
         print("Pendências:")
 
         for disciplina in self.disciplinas_pendentes:
-            print(disciplina.nome)
+            print(f"{disciplina.nome}")

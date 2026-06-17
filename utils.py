@@ -50,7 +50,7 @@ def nome_jogador():
         else:
             return nome
         
-def discplina_por_periodo(lista_de_disciplinas, periodo):
+def disciplina_por_periodo(lista_de_disciplinas, periodo):
     disciplinas_do_periodo = []
     for disciplina in lista_de_disciplinas:
         if disciplina.periodo == periodo:

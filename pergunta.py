@@ -12,10 +12,10 @@ class Pergunta:
             print("Resposta correta")
             return True
         else:
-            jogador.adicionar_pendencias(disciplina)
+            
             return False
     
-    def perguntar(self):
+    def mostrar_pergunta(self):
         print(f"{self.enunciado}\n")
         print(f"A-{self.alternativas['A']}")
         print(f"B-{self.alternativas['B']}")

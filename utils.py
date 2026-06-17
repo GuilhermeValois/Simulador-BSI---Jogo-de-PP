@@ -37,6 +37,22 @@ def carregar_perguntas():
             )
             lista_perguntas.append(pergunta)
     return lista_perguntas
+def carregar_tcc():
+
+    ARQUIVO_PERGUNTAS = os.path.join(os.path.dirname(__file__),'data', 'tcc.json')
+
+    with open(ARQUIVO_PERGUNTAS, 'r', encoding = 'utf-8') as arq:
+        perguntas_tcc = []
+    
+        for dados in json.load(arq):
+            pergunta = Pergunta(
+                dados['enunciado'],
+                dados['categoria'],
+                dados['alternativas'],
+                dados['resposta']
+            )
+            perguntas_tcc.append(pergunta)
+    return perguntas_tcc
 
 def nome_jogador():
     while True:
@@ -60,3 +76,17 @@ def disciplina_por_periodo(lista_de_disciplinas, periodo):
     for disciplina in disciplinas_do_periodo:
         print(f"{disciplina.nome}\n")
     return disciplinas_do_periodo
+
+def fazer_tcc(perguntas_tcc):    
+    acertos = 0
+    for pergunta in perguntas_tcc:
+        pergunta.mostrar_pergunta()
+        resposta_do_usuario = input("").strip().upper()
+        acertou = pergunta.verificar_resposta(resposta_do_usuario, disciplina, jogador)
+        if acertou == True:
+            acertos += 1
+    if acertos >= 3:
+        return True
+    else:
+        return False
+

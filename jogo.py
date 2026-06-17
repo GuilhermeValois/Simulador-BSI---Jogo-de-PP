@@ -5,9 +5,9 @@ from pergunta import Pergunta
 import colorama
 
 
-def jogar(jogador, lista_disciplinas, perguntas_por_categoria):
+def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
     reprovacao = 0
-    while jogador.periodo <= 9:
+    while jogador.periodo <= 8:
         if reprovacao == 3:
             print("jubilado")
             return
@@ -20,26 +20,66 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria):
                 pagar = input("Deseja pagar pendências?").strip().lower()
                 if pagar == 's':
                     disciplinas.extend(jogador.disciplinas_pendentes)
+                    jogador.disciplinas_pendentes = []
                     break
                 elif pagar == 'n':
                     break
                 print("Opção inválida")
-        elif len(jogador.disciplinas_pendentes) > 0 and jogador.periodo == 9:
-            disciplinas.extend(jogador.disciplinas_pendentes)
+        
         disciplinas_que_reprovou = []
         for disciplina in disciplinas:
             pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
             pergunta.mostrar_pergunta()
             resposta_do_usuario = input("").strip().upper()
-            acertou = pergunta.verificar_resposta(resposta_do_usuario, disciplina,jogador)
+            acertou = pergunta.verificar_resposta(resposta_do_usuario)
             if acertou == True:
                 acertos += 1
             else:
                 disciplinas_que_reprovou.append(disciplina)
-        if acertos >= len(disciplinas)/2:
+        if acertos >= len(disciplinas)/2 and jogador.periodo:
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.periodo += 1
             print("Aprovado")
         else:
             reprovacao += 1
-            print("Reprovado, vc pagará novamente esse período")
+            print("Reprovado, você pagará novamente esse período")
+
+    if jogador.periodo == 9:
+        while True:
+            acertos = 0
+            disciplinas_que_reprovou
+            if len(jogador.disciplinas_pendentes) > 0: 
+                print("Você tem que pagar as pendências antes do TCC")
+                jogador.mostrar_pendencias()
+                for disciplina in jogador.disciplinas_pendentes:
+                    pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
+                    pergunta.mostrar_pergunta()
+                    resposta_do_usuario = input("").strip().upper()
+                    acertou = pergunta.verificar_resposta(resposta_do_usuario, disciplina,jogador)
+                    if acertou == True:
+                        acertos += 1
+                    else:
+                        disciplinas_que_reprovou.append(disciplina)
+                if acertos == len(jogador.disciplinas_pendentes):
+                    print("Aprovado, pode fazer tcc")
+                    aprovacao = utils.fazer_tcc(perguntas_tcc)
+                    if aprovacao == True:
+                        print("Você se formou em BSI! Parabéns!")
+                    else:
+                        print("Seu TCC não foi aprovado! Tente de novo")
+                        continue
+                else:
+                    reprovacoes += 1
+                    if reprovacao == 3:
+                        print("jubilado")
+                        return
+                    else:
+                        print("Reprovado, pagará novamente as pendências")
+            else:
+                print("Agora é a hora de fazer o TCC")
+                aprovacao = utils.fazer_tcc(perguntas_tcc)
+                if aprovacao == True:
+                    print("Você se formou em BSI! Parabéns!")
+                else:
+                    print("Seu TCC não foi aprovado! Tente de novo")
+                    continue

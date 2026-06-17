@@ -1,3 +1,4 @@
+import colorama
 
 class Pergunta:
     def __init__(self, enunciado, categoria, alternativas, resposta):
@@ -9,10 +10,10 @@ class Pergunta:
     def verificar_resposta(self, resposta_usuario, disciplina,jogador):
         
         if resposta_usuario == self.resposta:
-            print("Resposta correta")
+            print("\n✅Resposta correta\n")
             return True
         else:
-            
+            print()
             return False
     
     def mostrar_pergunta(self):

@@ -2,8 +2,7 @@ import utils
 from jogador import Jogador
 from disciplina import Disciplina
 from pergunta import Pergunta
-import pygame
-import sys
+import colorama
 
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria):

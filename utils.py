@@ -2,6 +2,7 @@ import json
 import os
 from disciplina import Disciplina
 from pergunta import Pergunta
+import colorama
 
 
 def carregar_disciplinas():

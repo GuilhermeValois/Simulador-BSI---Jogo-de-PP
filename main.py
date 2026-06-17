@@ -6,6 +6,7 @@ import sys
 
 lista_disciplinas = utils.carregar_disciplinas()
 lista_perguntas = utils.carregar_perguntas()
+perguntas_tcc = utils.carregar_tcc()
 
 perguntas_por_categoria = {
     'programacao': [],
@@ -22,7 +23,7 @@ for pergunta in lista_perguntas:
 nome = utils.nome_jogador()
 jogador = Jogador(nome)
 
-jogo.jogar(jogador, lista_disciplinas, perguntas_por_categoria)
+jogo.jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc)
 pygame.init()
 
 # Configurações da janela
@@ -94,15 +95,4 @@ while rodando:
 
 pygame.quit()
 sys.exit()
-'''
-nome = input("Qual seu nome, Aluno(a)?")
-input(f"Olá! {nome}, você está iniciando no curso de BSI!\n Enter para continuar")
 
-for periodo in range(1,10):
-    disciplina_do_periodo = []
-    print(f"Disciplinas do {periodo}:\n")
-    for disciplina in lista_disciplinas:
-        if disciplina.periodo == periodo:
-            disciplina_do_periodo.append(disciplina)
-            print(disciplina.nome)
-'''

@@ -6,7 +6,7 @@ class Pergunta:
         self.alternativas = alternativas
         self.resposta = resposta
 
-    def verificar_resposta(self, resposta_usuario, disciplina,jogador):
+    def verificar_resposta(self, resposta_usuario):
         
         if resposta_usuario == self.resposta:
             print("Resposta correta")

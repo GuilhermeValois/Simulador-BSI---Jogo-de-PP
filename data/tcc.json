@@ -1,0 +1,57 @@
+[
+    {
+        "enunciado": "Ao iniciar um TCC, qual é uma boa prática para definir o tema?",
+        "alternativas": {
+            "A": "Escolher um tema inovador e de interesse pessoal, garantindo a existência de referencial teórico acessível.",
+            "B": "Optar por um assunto amplo para garantir maior volume de páginas e facilidade na escrita.",
+            "C": "Selecionar uma temática complexa sugerida pela banca para demonstrar domínio técnico desde o início.",
+            "D": "Focar em um problema inédito na literatura acadêmica, mesmo sem fontes prévias de consulta."
+        },
+        "categoria": "tcc",
+        "resposta": "A"
+    },
+    {
+    "enunciado": "Durante a escrita do TCC, qual atitude é correta ao utilizar ideias de outros autores?",
+    "alternativas": {
+        "A": "Reescrever a ideia com suas próprias palavras, o que dispensa a necessidade de citação direta ou indireta.",
+        "B": "Transcrever o trecho exato sem aspas, desde que o nome do autor e o ano sejam inseridos ao final do parágrafo.",
+        "C": "Fazer a citação formal da fonte, seja por meio de paráfrase (citação indireta) ou de transcrição exata (citação direta).",
+        "D": "Limitar o uso de conceitos externos, priorizando apenas opiniões e conclusões exclusivamente autorais."
+    },
+    "categoria": "tcc",
+    "resposta": "C"
+    },
+    {
+    "enunciado": "Seu orientador pediu uma revisão do trabalho antes da entrega. O que você deve fazer?",
+    "alternativas": {
+        "A": "Acatar as sugestões de forma irrestrita, pois o orientador tem a palavra final sobre o conteúdo do projeto.",
+        "B": "Analisar as críticas e aplicar as correções necessárias, dialogando com o orientador em caso de divergências fundamentadas.",
+        "C": "Manter a versão atual caso as alterações exijam modificações na estrutura metodológica já aprovada.",
+        "D": "Corrigir apenas os erros gramaticais e de formatação, mantendo o conteúdo original para não atrasar o cronograma."
+    },
+    "categoria": "tcc",
+    "resposta": "B"
+    },
+    {
+    "enunciado": "Faltam poucos dias para a entrega final do TCC. Qual deve ser sua prioridade?",
+    "alternativas": {
+        "A": "Adicionar novos dados e discussões recentes para enriquecer o conteúdo de última hora.",
+        "B": "Concentrar os esforços no refinamento textual, na consistência das referências e na formatação normativa (ABNT).",
+        "C": "Refazer os testes ou a metodologia caso os resultados obtidos não tenham sido os esperados originalmente.",
+        "D": "Dedicar-se exclusivamente ao ensaio da apresentação oral, considerando que a escrita já está consolidada."
+    },
+    "categoria": "tcc",
+    "resposta": "B"
+    },
+    {
+    "enunciado": "Durante a defesa do TCC, a banca faz uma pergunta sobre seu projeto. Qual é a postura mais adequada?",
+    "alternativas": {
+        "A": "Responder com base nas evidências do trabalho e na literatura estudada, admitindo limitações se necessário.",
+        "B": "Defender o ponto de vista inicial a todo custo, evitando demonstrar qualquer fragilidade ou dúvida metodológica.",
+        "C": "Concordar imediatamente com a crítica da banca e prometer alterar o texto final, encerrando o questionamento.",
+        "D": "Justificar as falhas apontadas culpando a falta de tempo ou a escassez de recursos durante a pesquisa."
+    },
+    "categoria": "tcc",
+    "resposta": "A"
+    }
+]

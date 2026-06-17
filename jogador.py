@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 class Jogador:
     
     def __init__(self, nome):
@@ -17,10 +19,10 @@ class Jogador:
     def mostrar_pendencias(self):
 
         if len(self.disciplinas_pendentes) == 0:
-            print("Sem pendências.")
+            print(Fore.GREEN + "🎉 Sem pendências." + Style.RESET_ALL)
             return
 
-        print("Pendências:")
+        print(Fore.BLUE + "Pendências:" + Style.RESET_ALL)
 
         for disciplina in self.disciplinas_pendentes:
             print(f"{disciplina.nome}")

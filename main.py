@@ -4,6 +4,7 @@ import jogo
 
 lista_disciplinas = utils.carregar_disciplinas()
 lista_perguntas = utils.carregar_perguntas()
+perguntas_tcc = utils.carregar_tcc()
 
 perguntas_por_categoria = {
     'programacao': [],
@@ -20,7 +21,7 @@ for pergunta in lista_perguntas:
 nome = utils.nome_jogador()
 jogador = Jogador(nome)
 
-jogo.jogar(jogador, lista_disciplinas, perguntas_por_categoria)
+jogo.jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc)
 
 '''
 nome = input("Qual seu nome, Aluno(a)?")

@@ -2,14 +2,14 @@ import utils
 from jogador import Jogador
 from disciplina import Disciplina
 from pergunta import Pergunta
-import colorama
+from colorama import Fore, Style
 
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
     reprovacao = 0
     while jogador.periodo <= 8:
         if reprovacao == 3:
-            print("jubilado")
+            print(Fore.RED + "❌ jubilado" + Style.RESET_ALL)
             return
         acertos = 0
         disciplinas = utils.disciplina_por_periodo(lista_disciplinas, jogador.periodo)
@@ -17,14 +17,14 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
             jogador.mostrar_pendencias()
             while True:
                 jogador.mostrar_pendencias()
-                pagar = input("Deseja pagar pendências?").strip().lower()
+                pagar = input(Fore.BLUE + "Deseja pagar pendências?" + Style.RESET_ALL).strip().lower()
                 if pagar == 's':
                     disciplinas.extend(jogador.disciplinas_pendentes)
                     jogador.disciplinas_pendentes = []
                     break
                 elif pagar == 'n':
                     break
-                print("Opção inválida")
+                print(Fore.YELLOW + "⚠️ Opção inválida" + Style.RESET_ALL)
         
         disciplinas_que_reprovou = []
         for disciplina in disciplinas:
@@ -39,17 +39,17 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
         if acertos >= len(disciplinas)/2 and jogador.periodo:
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.periodo += 1
-            print("Aprovado")
+            print(Fore.GREEN + "✅ Aprovado" + Style.RESET_ALL)
         else:
             reprovacao += 1
-            print("Reprovado, você pagará novamente esse período")
+            print(Fore.RED + "❌ Reprovado, você pagará novamente esse período" + Style.RESET_ALL)
 
     if jogador.periodo == 9:
         while True:
             acertos = 0
             disciplinas_que_reprovou
             if len(jogador.disciplinas_pendentes) > 0: 
-                print("Você tem que pagar as pendências antes do TCC")
+                print(Fore.LIGHTYELLOW_EX + "⚠️ Você tem que pagar as pendências antes do TCC" + Style.RESET_ALL)
                 jogador.mostrar_pendencias()
                 for disciplina in jogador.disciplinas_pendentes:
                     pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
@@ -61,25 +61,25 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                     else:
                         disciplinas_que_reprovou.append(disciplina)
                 if acertos == len(jogador.disciplinas_pendentes):
-                    print("Aprovado, pode fazer tcc")
+                    print(Fore.GREEN + "✅ Aprovado, pode fazer tcc" + Style.RESET_ALL)
                     aprovacao = utils.fazer_tcc(perguntas_tcc)
                     if aprovacao == True:
-                        print("Você se formou em BSI! Parabéns!")
+                        print(Fore.GREEN + "🎉 Você se formou em BSI! Parabéns!" + Style.RESET_ALL)
                     else:
-                        print("Seu TCC não foi aprovado! Tente de novo")
+                        print(Fore.RED + "😔 Seu TCC não foi aprovado! Tente de novo" + Style.RESET_ALL)
                         continue
                 else:
                     reprovacoes += 1
                     if reprovacao == 3:
-                        print("jubilado")
+                        print(Fore.RED + "❌ jubilado" + Style.RESET_ALL)
                         return
                     else:
-                        print("Reprovado, pagará novamente as pendências")
+                        print(Fore.RED + "❌ Reprovado, pagará novamente as pendências" + Style.RESET_ALL)
             else:
                 print("Agora é a hora de fazer o TCC")
                 aprovacao = utils.fazer_tcc(perguntas_tcc)
                 if aprovacao == True:
-                    print("Você se formou em BSI! Parabéns!")
+                    print(Fore.GREEN + "🎉 Você se formou em BSI! Parabéns!" + Style.RESET_ALL)
                 else:
-                    print("Seu TCC não foi aprovado! Tente de novo")
+                    print(Fore.RED + "😔 Seu TCC não foi aprovado! Tente de novo" + Style.RESET_ALL)
                     continue

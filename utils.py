@@ -2,7 +2,7 @@ import json
 import os
 from disciplina import Disciplina
 from pergunta import Pergunta
-import colorama
+from colorama import Fore, Style
 
 
 def carregar_disciplinas():
@@ -56,14 +56,14 @@ def carregar_tcc():
 
 def nome_jogador():
     while True:
-        print("Bem-vindo ao Aprova ou Reprova!\n")
+        print(Fore.YELLOW + "👋 Bem-vindo ao Aprova ou Reprova!\n" + Style.RESET_ALL)
         nome = input("Qual o seu nome, Aluno?")
         if not nome:
-            print("Nome não pode ser vazio")
+            print(Fore.LIGHTYELLOW_EX + "⚠️ Nome não pode ser vazio" + Style.RESET_ALL)
         elif len(nome)>20:
-            print("Nome muito longo")
+            print(Fore.LIGHTYELLOW_EX + "⚠️ Nome muito longo" + Style.RESET_ALL)
         elif not nome.replace('_','').isalnum():
-            print("Nome só deve conter letras, números e '_'")
+            print(Fore.LIGHTYELLOW_EX + "⚠️ Nome só deve conter letras, números e '_'" + Style.RESET_ALL)
         else:
             return nome
         
@@ -82,7 +82,7 @@ def fazer_tcc(perguntas_tcc):
     for pergunta in perguntas_tcc:
         pergunta.mostrar_pergunta()
         resposta_do_usuario = input("").strip().upper()
-        acertou = pergunta.verificar_resposta(resposta_do_usuario, disciplina, jogador)
+        acertou = pergunta.verificar_resposta(resposta_do_usuario)
         if acertou == True:
             acertos += 1
     if acertos >= 3:

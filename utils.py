@@ -59,7 +59,7 @@ def carregar_tcc():
 def nome_jogador():
     while True:
         limpar()
-        print(Fore.YELLOW + "👋 Bem-vindo ao Aprova ou Reprova!\n" + Style.RESET_ALL)
+        print(Fore.YELLOW + "👋 BEM-VINDO AO APROVA OU REPROVA!\n" + Style.RESET_ALL)
         nome = input(Fore.LIGHTYELLOW_EX + "🤔 Qual o seu nome, Aluno? " + Style.RESET_ALL)
         if not nome:
             print(Fore.LIGHTYELLOW_EX + "⚠️ Nome não pode ser vazio" + Style.RESET_ALL)

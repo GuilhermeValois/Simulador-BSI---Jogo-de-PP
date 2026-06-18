@@ -59,7 +59,7 @@ def carregar_tcc():
 def nome_jogador():
     while True:
         limpar()
-        print(Fore.YELLOW + "👋 Bem-vindo ao Aprova ou Reprova!\n" + Style.RESET_ALL)
+        print(Fore.YELLOW + "👋 BEM-VINDO AO APROVA OU REPROVA!\n" + Style.RESET_ALL)
         nome = input(Fore.LIGHTYELLOW_EX + "🤔 Qual o seu nome, Aluno? " + Style.RESET_ALL)
         if not nome:
             print(Fore.LIGHTYELLOW_EX + "⚠️ Nome não pode ser vazio" + Style.RESET_ALL)
@@ -89,7 +89,10 @@ def fazer_tcc(perguntas_tcc):
     acertos = 0
     for pergunta in perguntas_tcc:
         pergunta.mostrar_pergunta()
-        resposta_do_usuario = input("").strip().upper()
+        resposta_do_usuario = input(Fore.LIGHTYELLOW_EX + "📝 Sua resposta: " + Style.RESET_ALL).strip().upper()
+        while resposta_do_usuario not in ['A','B','C','D']:
+            print(Fore.RED + "❌ RESPOSTA INVÁLIDA" + Style.RESET_ALL)
+            resposta_do_usuario = input(Fore.LIGHTYELLOW_EX + "📝 Sua resposta: " + Style.RESET_ALL).strip().upper()
         acertou = pergunta.verificar_resposta(resposta_do_usuario)
         if acertou == True:
             acertos += 1

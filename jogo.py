@@ -61,7 +61,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                     while resposta_do_usuario not in ['A','B','C','D']:
                         print(Fore.RED + "❌ RESPOSTA INVÁLIDA" + Style.RESET_ALL)
                         resposta_do_usuario = input(Fore.LIGHTYELLOW_EX + "📝 Sua resposta: " + Style.RESET_ALL).strip().upper()
-                    acertou = pergunta.verificar_resposta(resposta_do_usuario, disciplina,jogador)
+                    acertou = pergunta.verificar_resposta(resposta_do_usuario)
                     if acertou == False:
                         disciplinas_que_reprovou.append(disciplina)
                 jogador.disciplinas_pendentes = disciplinas_que_reprovou

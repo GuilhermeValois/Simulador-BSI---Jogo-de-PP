@@ -81,6 +81,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                 aprovacao = utils.fazer_tcc(perguntas_tcc)
                 if aprovacao == True:
                     print(Fore.GREEN + "🎉 Você se formou em BSI! Parabéns!" + Style.RESET_ALL)
+                    break
                 else:
                     print(Fore.RED + "😔 Seu TCC não foi aprovado! Tente de novo" + Style.RESET_ALL)
                     continue

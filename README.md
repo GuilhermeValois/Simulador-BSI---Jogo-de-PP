@@ -32,6 +32,26 @@ Cada disciplina está associada a uma categoria de perguntas. Ao cursar uma disc
 
 ---
 
+## Exemplos de Execução
+
+### Início do Jogo
+
+![Início](imagens_readme/tela_inicial.png)
+
+### Disciplinas de um Período
+
+![Disciplinas](imagens_readme/disciplinas.png)
+
+### Pergunta de uma Disciplina
+
+![Disciplinas](imagens_readme/pergunta.png)
+
+### Defesa do TCC
+
+![TCC](imagens_readme/fazendo_tcc.png)
+
+---
+
 ## 🗂️ Estrutura do Projeto
 
 ```text
@@ -108,6 +128,15 @@ Caso a biblioteca não esteja instalada em sua máquina, utilize o comando:
 ```bash
 pip install colorama
 ```
+
+---
+
+## 📂 Documentação e materiais:
+
+- Relatório (Guilherme Vasconcellos Valois):
+  [Link do Docs](https://docs.google.com/document/d/1poZHwngC5yi5qpTBt2vC4iwKmihuQIfDIJDbY6v9ZLM/edit?usp=sharing)
+
+---
 
 ## 👨‍💻 Autores
 

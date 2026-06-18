@@ -89,7 +89,7 @@ def fazer_tcc(perguntas_tcc):
     acertos = 0
     for pergunta in perguntas_tcc:
         pergunta.mostrar_pergunta()
-        resposta_do_usuario = input("").strip().upper()
+        resposta_do_usuario = input(Fore.LIGHTYELLOW_EX + "📝 Sua resposta: " + Style.RESET_ALL).strip().upper()
         acertou = pergunta.verificar_resposta(resposta_do_usuario)
         if acertou == True:
             acertos += 1

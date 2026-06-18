@@ -4,6 +4,7 @@ from disciplina import Disciplina
 from pergunta import Pergunta
 from colorama import Fore, Style
 import os
+import time, sys
 
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
@@ -65,7 +66,8 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                     aprovacao = utils.fazer_tcc(perguntas_tcc)
                     if aprovacao == True:
                         print(Fore.GREEN + "🎉 Você se formou em BSI! Parabéns!" + Style.RESET_ALL)
-                        break
+                        time.sleep(4)
+                        sys.exit()
                     else:
                         print(Fore.RED + "😔 Seu TCC não foi aprovado! Tente de novo" + Style.RESET_ALL)
                         continue
@@ -77,7 +79,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                     else:
                         print(Fore.RED + "❌ Reprovado, pagará novamente as pendências" + Style.RESET_ALL)
             else:
-                print("Agora é a hora de fazer o TCC")
+                print(Fore.LIGHTYELLOW_EX + "\n😉 Agora é a hora de fazer o TCC" + Style.RESET_ALL)
                 aprovacao = utils.fazer_tcc(perguntas_tcc)
                 if aprovacao == True:
                     print(Fore.GREEN + "🎉 Você se formou em BSI! Parabéns!" + Style.RESET_ALL)

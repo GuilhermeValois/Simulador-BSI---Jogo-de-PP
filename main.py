@@ -40,12 +40,14 @@ AMARELO = (255, 215, 0)
 # Fonte
 fonte_titulo = pygame.font.Font("fontes\Starborn.ttf", 48)
 fonte_botao = pygame.font.Font("fontes\Starborn.ttf", 40)
+fonte_nome = pygame.font.SysFont(None, 35)
+fonte_titulonome = pygame.font.SysFont(None, 40)
 
 # Botão jogar
 botao_jogar = pygame.Rect(535, 500, 230, 100)
 
 # Campo de nome
-input_box = pygame.Rect(500, 400, 300, 50)
+input_box = pygame.Rect(450, 380, 400, 70)
 nome_jogador = ""
 ativo = False
 
@@ -66,7 +68,13 @@ while rodando:
             if botao_jogar.collidepoint(evento.pos):
                 print("Nome: ", nome_jogador)
                 print("Jogo iniciado!")
-            
+        if evento.type == pygame.KEYDOWN and ativo:
+            if evento.key == pygame.K_RETURN:
+                print("Nome adicionado: ", nome_jogador)
+            elif evento.key == pygame.K_BACKSPACE:
+                nome_jogador = nome_jogador[:-1]
+            else:
+                nome_jogador += evento.unicode
 
     # Desenhar fundo
     tela.fill(BRANCO)
@@ -75,22 +83,23 @@ while rodando:
     tela.blit(fundo,(0,0))
 
     # Desenhar título
-    texto_titulo = fonte_titulo.render(
-        "Aprova ou Reprova",
-        True,
-        AMARELO
-    )
-
+    texto_titulo = fonte_titulo.render("Aprova ou Reprova", True, AMARELO)
     tela.blit(texto_titulo, (330, 180))
 
     # Desenhar botão
     pygame.draw.rect(tela, AMARELO, botao_jogar, border_radius=30)
-
     texto_botao = fonte_botao.render("Jogar", True, AZUL)
 
     # Centralizar texto do botão
     texto_rect = texto_botao.get_rect(center=botao_jogar.center)
     tela.blit(texto_botao, texto_rect)
+
+    # Desenhar campo de nome
+    pygame.draw.rect(tela, AMARELO, input_box, 7, border_radius=40)
+    titulo_nome = fonte_titulonome.render("Digite seu nome", True, BRANCO)
+    texto_nome = fonte_nome.render(nome_jogador or "Nome...", True, BRANCO)
+    tela.blit(texto_nome, (input_box.x+60, input_box.y+25))
+    tela.blit(titulo_nome, (540, 320))
 
     # Atualizar tela
     pygame.display.flip()

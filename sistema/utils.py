@@ -73,10 +73,13 @@ def valida_nome(nome):
         #nome = input(Fore.LIGHTYELLOW_EX + "🤔 Qual o seu nome, Aluno? " + Style.RESET_ALL)
         if not nome:
             print(Fore.LIGHTYELLOW_EX + "⚠️ Nome não pode ser vazio" + Style.RESET_ALL)
+            return False
         elif len(nome)>20:
             print(Fore.LIGHTYELLOW_EX + "⚠️ Nome muito longo" + Style.RESET_ALL)
+            return False
         elif not nome.replace('_','').isalnum():
             print(Fore.LIGHTYELLOW_EX + "⚠️ Nome só deve conter letras, números e '_'" + Style.RESET_ALL)
+            return False
         else:
             return True
     
@@ -147,18 +150,31 @@ def contador(tela, fonte, segundos,mensagem):
         tela.fill(constantes.BRANCO)
         tela.blit(mensagem, (mensagem.get_rect(center=(1280//2,400))))
 
-        texto = fonte.render(
-            f"Próxima pergunta em {restante}",
-            True,
-            constantes.PRETO
-        )
+        texto = fonte.render(f"Próxima pergunta em {restante}",True,constantes.PRETO)
 
-        tela.blit(
-            texto,
-            texto.get_rect(center=(640, 360))
-        )
+        tela.blit(texto,texto.get_rect(center=(640, 360)))
 
         pygame.display.flip()
+
+def cronometro(tela, fonte, segundos):
+
+    inicio = pygame.time.get_ticks()
+
+    restante = segundos - (pygame.time.get_ticks() - inicio) // 1000
+
+    if restante <= 0:
+        tempo_acabou = True
+        return True
+    texto = fonte.render(
+        f"Cronômetro: {restante}",
+        True,
+        constantes.PRETO
+    )
+
+    tela.blit(
+        texto,
+        texto.get_rect(center=(640, 360))
+        )
 
 def desenhar_borda(canvas, doc):
     largura, altura = doc.pagesize

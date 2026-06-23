@@ -5,7 +5,7 @@ from classes.pergunta import Pergunta
 from colorama import Fore, Style
 import os
 import time, sys
-from interface import constantes, menu_inicial, tela_nome, tela_pagar_pendencias
+from interface import constantes, menu_inicial
 import pygame
 from interface import tela_pergunta
 
@@ -103,17 +103,15 @@ def jogar_com_interface(tela,perguntas_por_categoria,pergunas_tcc,lista_discipli
     while rodando:
 
         if estado == 'menu_inicial':
-            estado = menu_inicial.mostra_menu(tela)
-        if estado == 'tela_nome':
-            retorno = tela_nome.mostrar_tela_nome(tela)
+            retorno = menu_inicial.tela_inicial(tela)
             nome = retorno[0]
-            jogador = Jogador(nome)
             estado = retorno[1]
+            jogador = Jogador(nome)
         if estado == 'tela_pergunta':
             if nome is not None:
                 tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas)
-        if estado == 'tela_pagar_pendencias':
-            tela_pagar_pendencias.mostrar_tela_pagar_pendencias()
+        if estado == 'tela_de_escolha':
+            print("")
 '''     
     reprovacao = 0
     while jogador.periodo <= 8:

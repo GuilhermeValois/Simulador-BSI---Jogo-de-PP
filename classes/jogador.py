@@ -7,6 +7,9 @@ class Jogador:
         self.periodo = 1
         self.reprovacoes = 0
         self.disciplinas_pendentes = []
+        self.moedas = 0
+        self.energia = 100
+        self.energia_max = 100
     
     def passou_de_periodo(self):
         self.periodo += 1

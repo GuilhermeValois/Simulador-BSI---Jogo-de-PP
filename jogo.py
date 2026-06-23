@@ -40,7 +40,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                 acertos += 1
             else:
                 disciplinas_que_reprovou.append(disciplina)
-        if acertos >= len(disciplinas)/2 and jogador.periodo:
+        if acertos >= len(disciplinas)/2:
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.periodo += 1
             print(Fore.GREEN + "✅ Aprovado" + Style.RESET_ALL)

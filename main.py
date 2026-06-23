@@ -1,6 +1,8 @@
 import utils
 from jogador import Jogador
 import jogo
+import pygame
+import sys
 
 lista_disciplinas = utils.carregar_disciplinas()
 lista_perguntas = utils.carregar_perguntas()
@@ -17,6 +19,84 @@ perguntas_por_categoria = {
 
 for pergunta in lista_perguntas:
     perguntas_por_categoria[pergunta.categoria].append(pergunta)
+
+pygame.init()
+
+# Configurações da janela
+LARGURA = 1280
+ALTURA = 720
+
+tela = pygame.display.set_mode((LARGURA, ALTURA))
+pygame.display.set_caption("Aprova ou Reprova")
+fundo = pygame.image.load("imagens/fundo_tela_inicial.png")
+fundo = pygame.transform.scale(fundo, (1280, 720))
+
+# Cores
+BRANCO = (255, 255, 255)
+PRETO = (0, 0, 0)
+AZUL = (0, 120, 255)
+AMARELO = (255, 215, 0)
+
+# Fonte
+fonte_titulo = pygame.font.Font("fontes\Starborn.ttf", 48)
+fonte_botao = pygame.font.Font("fontes\Starborn.ttf", 40)
+
+# Botão jogar
+botao_jogar = pygame.Rect(535, 500, 230, 100)
+
+# Campo de nome
+input_box = pygame.Rect(500, 400, 300, 50)
+nome_jogador = ""
+ativo = False
+
+rodando = True
+
+while rodando:
+
+    # Eventos
+    for evento in pygame.event.get():
+        if evento.type == pygame.QUIT:
+            rodando = False
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            if input_box.collidepoint(evento.pos):
+                ativo = True
+            else:
+                ativo = False
+
+            if botao_jogar.collidepoint(evento.pos):
+                print("Nome: ", nome_jogador)
+                print("Jogo iniciado!")
+            
+
+    # Desenhar fundo
+    tela.fill(BRANCO)
+    fundo = pygame.image.load("imagens/fundo_tela_inicial.png")
+    fundo = pygame.transform.scale(fundo, (1280, 720))
+    tela.blit(fundo,(0,0))
+
+    # Desenhar título
+    texto_titulo = fonte_titulo.render(
+        "Aprova ou Reprova",
+        True,
+        AMARELO
+    )
+
+    tela.blit(texto_titulo, (330, 180))
+
+    # Desenhar botão
+    pygame.draw.rect(tela, AMARELO, botao_jogar, border_radius=30)
+
+    texto_botao = fonte_botao.render("Jogar", True, AZUL)
+
+    # Centralizar texto do botão
+    texto_rect = texto_botao.get_rect(center=botao_jogar.center)
+    tela.blit(texto_botao, texto_rect)
+
+    # Atualizar tela
+    pygame.display.flip()
+
+pygame.quit()
+sys.exit()
 
 nome = utils.nome_jogador()
 jogador = Jogador(nome)

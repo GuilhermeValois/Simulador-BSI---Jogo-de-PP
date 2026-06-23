@@ -8,8 +8,8 @@ class Jogador:
         self.reprovacoes = 0
         self.disciplinas_pendentes = []
     
-    def passou_de_período(self):
-        self.periodo =+ 1
+    def passou_de_periodo(self):
+        self.periodo += 1
 
     def adicionar_pendencia(self, disciplina):
 

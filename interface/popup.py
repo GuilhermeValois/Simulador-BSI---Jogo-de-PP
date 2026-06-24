@@ -22,7 +22,7 @@ def mostrar_aprovacao(tela,jogador):
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 
                 if botao_menu.collidepoint(evento.pos):
-                    estado = 'tela_de_escolha'
+                    estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
                     estado = 'tela_pergunta'
@@ -70,7 +70,7 @@ def mostrar_reprovacao(tela,jogador):
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 
                 if botao_menu.collidepoint(evento.pos):
-                    estado = 'tela_de_escolha'
+                    estado = 'tela_escolha'
                     return estado
                 if botao_refazer.collidepoint(evento.pos):
                     estado = 'tela_pergunta'

@@ -1,15 +1,21 @@
 from colorama import Fore, Style
-
+from classes.disciplina import Disciplina
 class Jogador:
     
     def __init__(self, nome):
         self.nome = nome
         self.periodo = 1
         self.reprovacoes = 0
-        self.disciplinas_pendentes = []
-        self.moedas = 0
+        self.disciplinas_pendentes = [
+    Disciplina("Projeto Interdisciplinar para sistemas de informações 1", 1, "Matemática"),
+    Disciplina("Algoritmos e Programação", 1, "Programação"),
+    Disciplina("Fundamentos de Sistemas de Informação", 1, "BSI")
+]
+        self.moedas = 100
         self.energia = 100
         self.energia_max = 100
+        self.reprovacoes = 0
+        self.siuaca = 'cursando'
     
     def passou_de_periodo(self):
         self.periodo += 1

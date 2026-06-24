@@ -5,7 +5,7 @@ import sys
 from interface import popup
 
 
-def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas):
+def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas,periodo=None):
     pygame.init()
 
     fonte_disciplina = pygame.font.SysFont(None,40)
@@ -30,7 +30,11 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     disciplinas_que_reprovou = [] 
     moedas = 0
     tempo_acabou = False
-    disciplinas = utils.disciplina_por_periodo(lista_disciplinas, jogador.periodo, jogador.nome)
+    if periodo == None:
+        periodo_escolhido = jogador.periodo
+    else:
+        periodo_escolhido = periodo
+    disciplinas = utils.disciplina_por_periodo(lista_disciplinas, periodo_escolhido, jogador.nome)
     for disciplina in disciplinas:
         resposta = None
         pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
@@ -174,7 +178,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 True,
                 constantes.PRETO
             )
-            tela.blit(texto_c, (texto_a.get_rect(center=botao_c.center)))
+            tela.blit(texto_c, (texto_c.get_rect(center=botao_c.center)))
             pygame.draw.rect(tela,constantes.VERDE, espaco_c,border_radius=30)
             pygame.draw.rect(tela,constantes.PRETO,espaco_c,2,border_radius=30)
             
@@ -199,7 +203,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 True,
                 constantes.PRETO
             )
-            tela.blit(texto_d, (texto_a.get_rect(center=botao_d.center)))
+            tela.blit(texto_d, (texto_d.get_rect(center=botao_d.center)))
             pygame.draw.rect(tela,constantes.VERDE, espaco_d,border_radius=30)
             pygame.draw.rect(tela,constantes.PRETO,espaco_d,2,border_radius=30)
             
@@ -220,17 +224,16 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.passou_de_periodo()
-            jogador.moeda = moedas
-            estado = 'tela_escolha'
+            jogador.moeda += moedas
+            estado = 'tela de escolha'
             return estado
-
         else:
             jogador.passou_de_periodo()
             jogador.moeda = moedas
-            estado = 'tela_escolha'
+            estado = popup.mostrar_aprovacao(tela, jogador)
             return estado
     else:
-        estado = 'tela_escolha'
+        estado = popup.mostrar_reprovacao(tela,jogador)         
         return estado
 
 

@@ -8,7 +8,7 @@ def tela_escolha(tela,jogador):
     fonte_titulo = pygame.font.SysFont(None, 60)
     fonte_texto = pygame.font.SysFont("Segoe UI Emoji", 40)
 
-    cabecalho = f" 👤 {nome}                                                                            🪙 {moedas} moedas"
+    cabecalho = f" 👤 {jogador.nome}                                                                            🪙 {jogador.moedas} moedas"
 
     botoes = []
     largura_botao = 300

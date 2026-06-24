@@ -5,10 +5,9 @@ def tela_escolha(tela,jogador):
 
     fundo = pygame.image.load("imagens/fundo_jogo.png")
     fundo = pygame.transform.scale(fundo, (1280, 720))
-    fonte_titulo = pygame.font.SysFont(None, 60)
-    fonte_texto = pygame.font.SysFont("Segoe UI Emoji", 40)
-
-    cabecalho = f" 👤 {jogador.nome}                                                        🪙 {jogador.moedas} moedas"
+    fonte_emoji = pygame.font.SysFont("Segoe UI Emoji", 40)
+    fonte_texto = pygame.font.SysFont("arial black", 40, bold=True)
+    fonte_cabecalho = pygame.font.SysFont("arial", 40, bold=True)
 
     botoes = []
     largura_botao = 300
@@ -18,24 +17,34 @@ def tela_escolha(tela,jogador):
     inicio_x = 150
     inicio_y = 250
 
-    for i in range(9):
+    for i in range(8):
         linha = i // 3
         coluna = i % 3
         x = inicio_x + coluna * (largura_botao + espacamento_x)
         y = inicio_y + linha * (altura_botao + espacamento_y)
         botoes.append((i+1, pygame.Rect(x, y, largura_botao, altura_botao)))
     
+    # Imagem períodos
+    imagem_periodos = []
+    for i in range(8):
+        fundo_periodo = pygame.image.load(f"imagens/fundo_periodos.png")
+        fundo_periodo = pygame.transform.scale(fundo_periodo, (300, 300))
+        imagem_periodos.append(fundo_periodo)
+    
     scroll_y = 0
+    limite_superior = 0
+    limite_inferior = -((len(botoes)//3) * (altura_botao + espacamento_y) - 300 + 150)
     rodando = True
+
     while rodando:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 rodando = False
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 if evento.button == 4:
-                    scroll_y += 40
+                    scroll_y = min(scroll_y + 40, limite_superior)
                 elif evento.button == 5:
-                    scroll_y -= 40
+                    scroll_y = max(scroll_y - 40, limite_inferior)
                 else:
                     for i, rect in botoes:
                         rect_scroll = rect.move(0, scroll_y)
@@ -49,18 +58,42 @@ def tela_escolha(tela,jogador):
         tela.blit(fundo, (0, 0))
 
         # Cabeçalho
-        texto_cabecalho = fonte_texto.render(cabecalho, True, constantes.BRANCO)
-        tela.blit(texto_cabecalho, (180, 100))
+        texto_emoji_nome = fonte_emoji.render("👤", True, constantes.BRANCO)
+        texto_nome = fonte_cabecalho.render(jogador.nome, True, constantes.BRANCO)
+        tela.blit(texto_emoji_nome, (140, 100 + scroll_y))
+        tela.blit(texto_nome, (190, 100 + scroll_y))
+
+        texto_emoji_moeda = fonte_emoji.render("🪙", True, constantes.BRANCO)
+        texto_moeda = fonte_cabecalho.render(f"{jogador.moedas} moedas", True, constantes.BRANCO)
+        tela.blit(texto_emoji_moeda, (940, 100 + scroll_y))
+        tela.blit(texto_moeda, (1000, 100 + scroll_y))
 
         # Título
-        texto_titulo = fonte_titulo.render("ESCOLHA O PERÍODO", True, constantes.AMARELO)
-        tela.blit(texto_titulo, (430, 100))
+        texto_titulo_sombra = fonte_texto.render("ESCOLHA O PERÍODO", True, constantes.CINZA_ESCURO)
+        texto_titulo = fonte_texto.render("ESCOLHA O PERÍODO", True, constantes.AMARELO)
+        tela.blit(texto_titulo_sombra, (410,105 + scroll_y))
+        tela.blit(texto_titulo, (410, 100 + scroll_y))
 
         # Botões
         for i, rect in botoes:
             rect_scroll = rect.move(0, scroll_y)
-            pygame.draw.rect(tela, constantes.AZUL, rect_scroll, border_radius=10)
-            texto_botao = fonte_texto.render(f"📚 {i}º período", True, constantes.BRANCO)
-            tela.blit(texto_botao, texto_botao.get_rect(center=rect_scroll.center))
+            tela.blit(imagem_periodos[i-1], rect_scroll)
+            pygame.draw.rect(tela, constantes.AMARELO, rect_scroll, 3, border_radius=10)
+
+            texto_botao_sombra = fonte_texto.render(f"{i}º período", True, constantes.CINZA_ESCURO)
+            texto_emoji = fonte_emoji.render("📚", True, constantes.BRANCO)
+            texto_botao = fonte_texto.render(f" {i}º período", True, constantes.AMARELO)
+        
+            # Combinar emoji e texto
+            largura_total = texto_emoji.get_width() + texto_botao.get_width() + 10
+            x_base = rect_scroll.centerx - largura_total // 2
+            y_base = rect_scroll.centery - texto_botao.get_height() // 2
+
+            emoji_rect = texto_emoji.get_rect(center=(rect_scroll.centerx, rect_scroll.centery - 40))
+            texto_rect = texto_botao.get_rect(center=(rect_scroll.centerx, rect_scroll.centery + 40))
+
+            tela.blit(texto_botao_sombra, (texto_rect.x + 2, texto_rect.y + 2))
+            tela.blit(texto_emoji, emoji_rect)
+            tela.blit(texto_botao, texto_rect)
         
         pygame.display.flip()

@@ -5,7 +5,7 @@ from classes.pergunta import Pergunta
 from colorama import Fore, Style
 import os
 import time, sys
-from interface import constantes, menu_inicial, tela_escolha, tela_pergunta
+from interface import constantes, tela_inicial, tela_escolha, tela_pergunta
 import pygame
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
@@ -97,20 +97,21 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
 def jogar_com_interface(tela,perguntas_por_categoria,pergunas_tcc,lista_disciplinas):
     nome = None
     rodando = True
-    estado = 'menu_inicial'
+    estado = 'tela_inicial'
     tela = pygame.display.set_mode((constantes.LARGURA,constantes.ALTURA))
+    moedas = 0
     while rodando:
 
-        if estado == 'menu_inicial':
-            retorno = menu_inicial.tela_inicial(tela)
+        if estado == 'tela_inicial':
+            retorno = tela_inicial.tela_inicial(tela)
             nome = retorno[0]
             estado = retorno[1]
             jogador = Jogador(nome)
         if estado == 'tela_escolha':
-            tela_escolha(tela, nome_jogador, moedas)
-        if estado == 'tela_pergunta':
             if nome is not None:
-                tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas)
+                tela_escolha.tela_escolha(tela, nome, moedas)
+        if estado == 'tela_pergunta':
+            tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas)
         
 '''     
     reprovacao = 0

@@ -46,7 +46,7 @@ def tela_inicial(tela):
                     print("Nome: ", nome_jogador)
                     print("Jogo iniciado!")
                     if utils.valida_nome(nome_jogador):
-                        estado = 'tela_pergunta'
+                        estado = 'tela_escolha'
                         return nome_jogador, estado
                     else:
                         invalidez = 'Nome Inválido'
@@ -54,7 +54,7 @@ def tela_inicial(tela):
                 if evento.key == pygame.K_RETURN:
                     print("Nome adicionado: ", nome_jogador)
                     if utils.valida_nome(nome_jogador):
-                        estado = 'tela_pergunta'
+                        estado = 'tela_escolha'
                         return nome_jogador, estado
                 elif evento.key == pygame.K_BACKSPACE:
                     invalidez = ''

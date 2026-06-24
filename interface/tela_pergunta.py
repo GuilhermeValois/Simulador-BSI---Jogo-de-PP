@@ -77,7 +77,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                     break
 
             tela.fill(constantes.BRANCO)
-            fundo = pygame.image.load("imagens/fundo_perguntas.png")
+            fundo = pygame.image.load("imagens/fundo_jogo.png")
             fundo = pygame.transform.scale(fundo, (1280, 720))
             tela.blit(fundo,(0,0))
             segundos = 5
@@ -221,16 +221,16 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.passou_de_periodo()
             jogador.moeda = moedas
-            estado = 'tela de escolha'
+            estado = 'tela_escolha'
             return estado
 
         else:
             jogador.passou_de_periodo()
             jogador.moeda = moedas
-            estado = 'tela_de_escolha'
+            estado = 'tela_escolha'
             return estado
     else:
-        estado = 'tela_de_escolha'
+        estado = 'tela_escolha'
         return estado
 
 

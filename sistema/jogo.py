@@ -5,9 +5,8 @@ from classes.pergunta import Pergunta
 from colorama import Fore, Style
 import os
 import time, sys
-from interface import constantes, menu_inicial
+from interface import constantes, menu_inicial, tela_escolha, tela_pergunta
 import pygame
-from interface import tela_pergunta
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
     reprovacao = 0
@@ -107,11 +106,12 @@ def jogar_com_interface(tela,perguntas_por_categoria,pergunas_tcc,lista_discipli
             nome = retorno[0]
             estado = retorno[1]
             jogador = Jogador(nome)
+        if estado == 'tela_escolha':
+            tela_escolha(tela, nome_jogador, moedas)
         if estado == 'tela_pergunta':
             if nome is not None:
                 tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas)
-        if estado == 'tela_de_escolha':
-            print("")
+        
 '''     
     reprovacao = 0
     while jogador.periodo <= 8:

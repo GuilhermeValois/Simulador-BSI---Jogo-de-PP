@@ -16,7 +16,7 @@ def tela_inicial(tela):
 
     # Fonte
     fonte_titulo = pygame.font.Font("fontes\Starborn.ttf", 60)
-    fonte_nome = pygame.font.SysFont(None, 35)
+    fonte_nome = pygame.font.SysFont("Segoe UI Emoji", 25)
     fonte_titulonome = pygame.font.SysFont(None, 40)
 
     # Botão jogar
@@ -84,13 +84,14 @@ def tela_inicial(tela):
             texto_exibido = invalidez
             nome_jogador = ''
         elif nome_jogador:
-            texto_exibido = nome_jogador
+            texto_exibido = "👤 " + nome_jogador
         else:
-            texto_exibido = "Nome..."
-        pygame.draw.rect(tela, constantes.AMARELO, input_box, 7, border_radius=40)
+            texto_exibido = "👤 Nome..."
+        pygame.draw.rect(tela, constantes.CINZA_CLARO, input_box, border_radius=40)
+        pygame.draw.rect(tela, constantes.BRANCO, input_box, 7, border_radius=40)
         titulo_nome = fonte_titulonome.render("Digite seu nome", True, constantes.BRANCO)
-        texto_nome = fonte_nome.render(texto_exibido, True, constantes.BRANCO)
-        tela.blit(texto_nome, (input_box.x+60, input_box.y+25))
+        texto_nome = fonte_nome.render(texto_exibido, True, constantes.PRETO)
+        tela.blit(texto_nome, (input_box.x+40, input_box.y+25))
         tela.blit(titulo_nome, (540, 320))
 
         # Botão pulsante

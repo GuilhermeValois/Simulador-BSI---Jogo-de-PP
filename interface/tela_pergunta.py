@@ -77,7 +77,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                     break
 
             tela.fill(constantes.BRANCO)
-            fundo = pygame.image.load("imagens/fundo_perguntas.png")
+            fundo = pygame.image.load("imagens/fundo_jogo.png")
             fundo = pygame.transform.scale(fundo, (1280, 720))
             tela.blit(fundo,(0,0))
             segundos = 5
@@ -223,14 +223,13 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             jogador.moeda += moedas
             estado = 'tela de escolha'
             return estado
-
         else:
             jogador.passou_de_periodo()
             jogador.moeda = moedas
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado
     else:
-        estado = popup.mostrar_reprovacao(tela,jogador)
+        estado = popup.mostrar_reprovacao(tela,jogador)         
         return estado
 
 

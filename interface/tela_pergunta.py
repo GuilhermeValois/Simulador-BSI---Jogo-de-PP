@@ -237,7 +237,9 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             
             return estado
         else:
-            if periodo == 8: jogador.situacao = 'concluindo_curso'
+            if periodo == 8: 
+                jogador.situacao = 'formado'
+                utils.gerar_certificado(jogador.nome)
             if jogador.periodo < 8:jogador.passou_de_periodo()
             jogador.disciplinas_pendentes = []
             jogador.moeda = moedas
@@ -247,5 +249,4 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
         jogador.reprovacoes += 1
         estado = popup.mostrar_reprovacao(tela,jogador)     
         return estado
-    pygame.quit()
-    sys.exit()
+    

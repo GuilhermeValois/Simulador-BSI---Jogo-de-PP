@@ -1,3 +1,4 @@
+import math
 import pygame
 import sys
 from interface import constantes
@@ -14,8 +15,7 @@ def tela_inicial(tela):
     fundo = pygame.transform.scale(fundo, (1280, 720))
 
     # Fonte
-    fonte_titulo = pygame.font.Font("fontes\Starborn.ttf", 48)
-    fonte_botao = pygame.font.Font("fontes\Starborn.ttf", 40)
+    fonte_titulo = pygame.font.Font("fontes\Starborn.ttf", 60)
     fonte_nome = pygame.font.SysFont(None, 35)
     fonte_titulonome = pygame.font.SysFont(None, 40)
 
@@ -70,16 +70,14 @@ def tela_inicial(tela):
         tela.blit(fundo,(0,0))
 
         # Desenhar título
+        texto_titulo_sombra = fonte_titulo.render("Aprova ou Reprova", True, constantes.CINZA_ESCURO)
         texto_titulo = fonte_titulo.render("Aprova ou Reprova", True, constantes.AMARELO)
-        tela.blit(texto_titulo, (330, 180))
+        
+        # Posição titulo
+        pos_x, pos_y = 250, 180
 
-        # Desenhar botão
-        pygame.draw.rect(tela, constantes.AMARELO, botao_jogar, border_radius=30)
-        texto_botao = fonte_botao.render("Jogar", True, constantes.AZUL)
-
-        # Centralizar texto do botão
-        texto_rect = texto_botao.get_rect(center=botao_jogar.center)
-        tela.blit(texto_botao, texto_rect)
+        tela.blit(texto_titulo_sombra, (pos_x+3, pos_y+3))
+        tela.blit(texto_titulo, (pos_x, pos_y))
 
         # Desenhar campo de nome
         if invalidez:
@@ -94,6 +92,36 @@ def tela_inicial(tela):
         texto_nome = fonte_nome.render(texto_exibido, True, constantes.BRANCO)
         tela.blit(texto_nome, (input_box.x+60, input_box.y+25))
         tela.blit(titulo_nome, (540, 320))
+
+        # Botão pulsante
+        tempo = pygame.time.get_ticks()/500
+        pulsar = 8*math.sin(tempo)
+
+        rect_animado = pygame.Rect(
+            botao_jogar.x - pulsar/2,
+            botao_jogar.y - pulsar/2,
+            botao_jogar.width + pulsar,
+            botao_jogar.height + pulsar
+        )
+
+        # Sombra do botão
+        pygame.draw.rect(tela, constantes.AMARELO_ESCURO, rect_animado.move(5, 5), border_radius=30)
+
+        # Desenhar botão
+        pygame.draw.rect(tela, constantes.AMARELO, rect_animado, border_radius=30)
+
+        # Texto pulsante
+        fonte_botao = pygame.font.Font("fontes\Starborn.ttf", int(40 + pulsar/2))
+        texto_botao = fonte_botao.render("Jogar", True, constantes.AZUL)
+
+        # Sombra do texto
+        texto_botao_sombra = fonte_botao.render("Jogar", True, constantes.CINZA_ESCURO)
+        texto_rect = texto_botao.get_rect(center=rect_animado.center)
+        tela.blit(texto_botao_sombra, (texto_rect.x+3, texto_rect.y+3))
+
+        # Texto botão
+        tela.blit(texto_botao, texto_rect)
+
 
         # Atualizar tela
         pygame.display.flip()

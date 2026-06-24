@@ -174,7 +174,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 True,
                 constantes.PRETO
             )
-            tela.blit(texto_c, (texto_a.get_rect(center=botao_c.center)))
+            tela.blit(texto_c, (texto_c.get_rect(center=botao_c.center)))
             pygame.draw.rect(tela,constantes.VERDE, espaco_c,border_radius=30)
             pygame.draw.rect(tela,constantes.PRETO,espaco_c,2,border_radius=30)
             
@@ -199,7 +199,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 True,
                 constantes.PRETO
             )
-            tela.blit(texto_d, (texto_a.get_rect(center=botao_d.center)))
+            tela.blit(texto_d, (texto_d.get_rect(center=botao_d.center)))
             pygame.draw.rect(tela,constantes.VERDE, espaco_d,border_radius=30)
             pygame.draw.rect(tela,constantes.PRETO,espaco_d,2,border_radius=30)
             
@@ -220,17 +220,17 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.passou_de_periodo()
-            jogador.moeda = moedas
+            jogador.moeda += moedas
             estado = 'tela de escolha'
             return estado
 
         else:
             jogador.passou_de_periodo()
             jogador.moeda = moedas
-            estado = 'tela_de_escolha'
+            estado = popup.mostrar_aprovacao(tela, jogador)
             return estado
     else:
-        estado = 'tela_de_escolha'
+        estado = popup.mostrar_reprovacao(tela,jogador)
         return estado
 
 

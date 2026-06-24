@@ -3,6 +3,7 @@ from classes.jogador import Jogador
 import sistema.jogo as jogo
 import pygame
 from interface import constantes
+from interface import popup
 
 lista_disciplinas = utils.carregar_disciplinas()
 lista_perguntas = utils.carregar_perguntas()

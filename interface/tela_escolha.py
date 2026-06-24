@@ -6,14 +6,24 @@ def tela_escolha(tela, nome, moedas):
     fundo = pygame.image.load("imagens/fundo_jogo.png")
     fundo = pygame.transform.scale(fundo, (1280, 720))
     fonte_titulo = pygame.font.SysFont(None, 60)
-    fonte_texto = pygame.font.SysFont(None, 40)
+    fonte_texto = pygame.font.SysFont("Segoe UI Emoji", 40)
 
-    
+    cabecalho = f" 👤 {nome}                                                                            🪙 {moedas} moedas"
+
     botoes = []
-    for i in range(1, 10):
-        x = 400 + ((i-1) % 3) * 100
-        y = 250 + ((i-1)//3) * 80
-        botoes.append((i, pygame.Rect(x, y, 80, 60)))
+    largura_botao = 300
+    altura_botao = 300
+    espacamento_x = 50
+    espacamento_y = 40
+    inicio_x = 150
+    inicio_y = 250
+
+    for i in range(9):
+        linha = i // 3
+        coluna = i % 3
+        x = inicio_x + coluna * (largura_botao + espacamento_x)
+        y = inicio_y + linha * (altura_botao + espacamento_y)
+        botoes.append((i+1, pygame.Rect(x, y, largura_botao, altura_botao)))
     
     rodando = True
     while rodando:
@@ -25,7 +35,6 @@ def tela_escolha(tela, nome, moedas):
                     if rect.collidepoint(evento.pos):
                         print(f"Período escolhido: {i}")
                         return i, "tela_pergunta"
-        cabecalho = f" 👤 {nome}                   🪙 {moedas}"
 
         tela.fill(constantes.BRANCO)
 
@@ -34,11 +43,11 @@ def tela_escolha(tela, nome, moedas):
 
         # Cabeçalho
         texto_cabecalho = fonte_texto.render(cabecalho, True, constantes.BRANCO)
-        tela.blit(texto_cabecalho, (350, 100))
+        tela.blit(texto_cabecalho, (35, 100))
 
         # Título
         texto_titulo = fonte_titulo.render("ESCOLHA O PERÍODO", True, constantes.AMARELO)
-        tela.blit(texto_titulo, (400, 180))
+        tela.blit(texto_titulo, (450, 100))
 
         # Botões
         for i, rect in botoes:

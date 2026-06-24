@@ -5,7 +5,7 @@ import sys
 from interface import popup
 
 
-def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas):
+def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas,periodo=None):
     pygame.init()
 
     fonte_disciplina = pygame.font.SysFont(None,40)
@@ -30,7 +30,11 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     disciplinas_que_reprovou = [] 
     moedas = 0
     tempo_acabou = False
-    disciplinas = utils.disciplina_por_periodo(lista_disciplinas, jogador.periodo, jogador.nome)
+    if periodo == None:
+        periodo_escolhido = jogador.periodo
+    else:
+        periodo_escolhido = periodo
+    disciplinas = utils.disciplina_por_periodo(lista_disciplinas, periodo_escolhido, jogador.nome)
     for disciplina in disciplinas:
         resposta = None
         pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)

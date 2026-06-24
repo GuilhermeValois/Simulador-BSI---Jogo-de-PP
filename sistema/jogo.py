@@ -99,7 +99,7 @@ def jogar_com_interface(tela,perguntas_por_categoria,pergunas_tcc,lista_discipli
     rodando = True
     estado = 'tela_inicial'
     tela = pygame.display.set_mode((constantes.LARGURA,constantes.ALTURA))
-    moedas = 0
+    periodo = None
     while rodando:
 
         if estado == 'tela_inicial':
@@ -109,9 +109,12 @@ def jogar_com_interface(tela,perguntas_por_categoria,pergunas_tcc,lista_discipli
             jogador = Jogador(nome)
         if estado == 'tela_escolha':
             if nome is not None:
-                tela_escolha.tela_escolha(tela, nome, moedas)
+                retorno = tela_escolha.tela_escolha(tela,jogador)
+                periodo = retorno[0]
+                estado = retorno[1]
         if estado == 'tela_pergunta':
-            tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas)
+            estado = tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas,periodo)
+            periodo = None
         
 '''     
     reprovacao = 0

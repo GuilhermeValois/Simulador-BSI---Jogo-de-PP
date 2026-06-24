@@ -1,7 +1,7 @@
 import pygame
 from interface import constantes
 
-def tela_escolha(tela, nome, moedas):
+def tela_escolha(tela,jogador):
 
     fundo = pygame.image.load("imagens/fundo_jogo.png")
     fundo = pygame.transform.scale(fundo, (1280, 720))
@@ -25,7 +25,7 @@ def tela_escolha(tela, nome, moedas):
                     if rect.collidepoint(evento.pos):
                         print(f"Período escolhido: {i}")
                         return i, "tela_pergunta"
-        cabecalho = f" 👤 {nome}                   🪙 {moedas}"
+        cabecalho = f" 👤 {jogador.nome}                   🪙 {jogador.moedas}"
 
         tela.fill(constantes.BRANCO)
 

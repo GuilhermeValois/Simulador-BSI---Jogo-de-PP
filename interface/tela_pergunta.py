@@ -225,11 +225,13 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
             jogador.passou_de_periodo()
             jogador.moeda += moedas
+            jogador.periodo_desbloqueado += 1
             estado = 'tela de escolha'
             return estado
         else:
             jogador.passou_de_periodo()
             jogador.moeda = moedas
+            jogador.periodo_desbloqueado += 1
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado
     else:

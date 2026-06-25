@@ -31,6 +31,7 @@ def tela_escolha(tela,jogador):
         fundo_periodo = pygame.transform.scale(fundo_periodo, (300, 300))
         imagem_periodos.append(fundo_periodo)
     
+    jogador.periodo_desbloqueado = 1
     scroll_y = 0
     limite_superior = 0
     limite_inferior = -((len(botoes)//3) * (altura_botao + espacamento_y) - 300 + 150)
@@ -49,8 +50,11 @@ def tela_escolha(tela,jogador):
                     for i, rect in botoes:
                         rect_scroll = rect.move(0, scroll_y)
                         if rect_scroll.collidepoint(evento.pos):
-                            print(f"Período escolhido: {i}º")
-                            return i, "tela_pergunta"
+                            if i <= jogador.periodo_desbloqueado:
+                                print(f"Período escolhido: {i}º")
+                                return i, "tela_pergunta"
+                            else:
+                                print("Período bloqueado")
 
         tela.fill(constantes.BRANCO)
 
@@ -78,22 +82,30 @@ def tela_escolha(tela,jogador):
         for i, rect in botoes:
             rect_scroll = rect.move(0, scroll_y)
             tela.blit(imagem_periodos[i-1], rect_scroll)
-            pygame.draw.rect(tela, constantes.AMARELO, rect_scroll, 3, border_radius=10)
 
-            texto_botao_sombra = fonte_texto.render(f"{i}º período", True, constantes.CINZA_ESCURO)
-            texto_emoji = fonte_emoji.render("📚", True, constantes.BRANCO)
-            texto_botao = fonte_texto.render(f" {i}º período", True, constantes.AMARELO)
+            # Bloqueado
+            if i > jogador.periodo_desbloqueado:
+                cadeado = fonte_emoji.render("🔒", True, constantes.VERMELHO)
+                cadeado_rect = cadeado.get_rect(center=rect_scroll.center)
+                tela.blit(cadeado, cadeado_rect)
+            
+            #Desbloqueado
+            else:
+                pygame.draw.rect(tela, constantes.AMARELO, rect_scroll, 3, border_radius=10)
+                texto_botao_sombra = fonte_texto.render(f"{i}º período", True, constantes.CINZA_ESCURO)
+                texto_emoji = fonte_emoji.render("📚", True, constantes.BRANCO)
+                texto_botao = fonte_texto.render(f" {i}º período", True, constantes.AMARELO)
         
-            # Combinar emoji e texto
-            largura_total = texto_emoji.get_width() + texto_botao.get_width() + 10
-            x_base = rect_scroll.centerx - largura_total // 2
-            y_base = rect_scroll.centery - texto_botao.get_height() // 2
+                # Combinar emoji e texto
+                largura_total = texto_emoji.get_width() + texto_botao.get_width() + 10
+                x_base = rect_scroll.centerx - largura_total // 2
+                y_base = rect_scroll.centery - texto_botao.get_height() // 2
 
-            emoji_rect = texto_emoji.get_rect(center=(rect_scroll.centerx, rect_scroll.centery - 40))
-            texto_rect = texto_botao.get_rect(center=(rect_scroll.centerx, rect_scroll.centery + 40))
+                emoji_rect = texto_emoji.get_rect(center=(rect_scroll.centerx, rect_scroll.centery - 40))
+                texto_rect = texto_botao.get_rect(center=(rect_scroll.centerx, rect_scroll.centery + 40))
 
-            tela.blit(texto_botao_sombra, (texto_rect.x + 2, texto_rect.y + 2))
-            tela.blit(texto_emoji, emoji_rect)
-            tela.blit(texto_botao, texto_rect)
+                tela.blit(texto_botao_sombra, (texto_rect.x + 2, texto_rect.y + 2))
+                tela.blit(texto_emoji, emoji_rect)
+                tela.blit(texto_botao, texto_rect)
         
         pygame.display.flip()

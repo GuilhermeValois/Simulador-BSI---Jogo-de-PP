@@ -94,7 +94,7 @@ def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
                     print(Fore.RED + "😔 Seu TCC não foi aprovado! Tente de novo" + Style.RESET_ALL)
                     continue
 
-def jogar_com_interface(tela,perguntas_por_categoria,pergunas_tcc,lista_disciplinas):
+def jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas):
     nome = None
     rodando = True
     estado = 'tela_inicial'

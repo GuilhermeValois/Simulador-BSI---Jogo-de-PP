@@ -22,7 +22,8 @@ for pergunta in lista_perguntas:
     perguntas_por_categoria[pergunta.categoria].append(pergunta)
 
 tela = pygame.display.set_mode((constantes.LARGURA,constantes.ALTURA))
-jogo.jogar_com_interface(tela,perguntas_por_categoria,perguntas_tcc,lista_disciplinas)
+
+jogo.jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas)
 '''
 nome = utils.nome_jogador()
 jogador = Jogador(nome)

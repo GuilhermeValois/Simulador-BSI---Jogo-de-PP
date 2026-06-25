@@ -1,5 +1,5 @@
 from colorama import Fore, Style
-
+from classes.disciplina import Disciplina
 class Jogador:
     
     def __init__(self, nome):
@@ -10,6 +10,8 @@ class Jogador:
         self.moedas = 0
         self.energia = 100
         self.energia_max = 100
+        self.reprovacoes = 0
+        self.siuaca = 'cursando'
     
     def passou_de_periodo(self):
         self.periodo += 1

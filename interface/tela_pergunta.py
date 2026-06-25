@@ -30,11 +30,18 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     disciplinas_que_reprovou = [] 
     moedas = 0
     tempo_acabou = False
+    
     if periodo == None:
         periodo_escolhido = jogador.periodo
     else:
         periodo_escolhido = periodo
+    
     disciplinas = utils.disciplina_por_periodo(lista_disciplinas, periodo_escolhido, jogador.nome)
+    if len(jogador.disciplinas_pendentes) > 0 and jogador.situacao == 'cursando':
+        disciplinas.extend(jogador.disciplinas_pendente)
+    elif len(jogador.disciplinas_pendentes) > 0 and jogador.situacao == 'concluindo_curso':
+        popup.finalizando_curso
+        disciplinas = jogador.disciplinas_pendentes
     for disciplina in disciplinas:
         resposta = None
         pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
@@ -84,7 +91,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             fundo = pygame.image.load("imagens/fundo_jogo.png")
             fundo = pygame.transform.scale(fundo, (1280, 720))
             tela.blit(fundo,(0,0))
-            segundos = 5
+            segundos = 10
             restante = segundos - (pygame.time.get_ticks() - inicio) // 1000
 
             if restante <= 0:
@@ -222,22 +229,26 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             pygame.display.flip()
     if acertos >= len(disciplinas)/2:
         if len(disciplinas_que_reprovou) > 0:
-            jogador.disciplinas_pendentes.extend(disciplinas_que_reprovou)
-            jogador.passou_de_periodo()
+            jogador.disciplinas_pendentes = disciplinas_que_reprovou
+            estado = popup.pagar_pendencias()
+            if periodo == 8: jogador.situacao = 'concluindo_curso'
+            if jogador.periodo < 8:jogador.passou_de_periodo()
             jogador.moeda += moedas
             jogador.periodo_desbloqueado += 1
             estado = 'tela de escolha'
             return estado
         else:
-            jogador.passou_de_periodo()
+            if periodo == 8: 
+                jogador.situacao = 'formado'
+                utils.gerar_certificado(jogador.nome)
+            if jogador.periodo < 8:jogador.passou_de_periodo()
+            jogador.disciplinas_pendentes = []
             jogador.moeda = moedas
             jogador.periodo_desbloqueado += 1
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado
     else:
-        estado = popup.mostrar_reprovacao(tela,jogador)         
+        jogador.reprovacoes += 1
+        estado = popup.mostrar_reprovacao(tela,jogador)     
         return estado
-
-
-    pygame.quit()
-    sys.exit()
+    

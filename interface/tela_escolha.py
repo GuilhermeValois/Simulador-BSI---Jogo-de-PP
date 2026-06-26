@@ -64,13 +64,13 @@ def tela_escolha(tela,jogador):
         # Cabeçalho
         texto_emoji_nome = fonte_emoji.render("👤", True, constantes.BRANCO)
         texto_nome = fonte_cabecalho.render(jogador.nome, True, constantes.BRANCO)
-        tela.blit(texto_emoji_nome, (140, 70 + scroll_y))
-        tela.blit(texto_nome, (190, 70 + scroll_y))
+        tela.blit(texto_emoji_nome, (140, 100 + scroll_y))
+        tela.blit(texto_nome, (190, 100 + scroll_y))
 
         texto_emoji_moeda = fonte_emoji.render("🪙", True, constantes.BRANCO)
         texto_moeda = fonte_cabecalho.render(f"{jogador.moedas} moedas", True, constantes.BRANCO)
-        tela.blit(texto_emoji_moeda, (940, 70 + scroll_y))
-        tela.blit(texto_moeda, (1000, 70 + scroll_y))
+        tela.blit(texto_emoji_moeda, (940, 100 + scroll_y))
+        tela.blit(texto_moeda, (1000, 100 + scroll_y))
 
         # Título
         texto_titulo_sombra = fonte_texto.render("ESCOLHA O PERÍODO", True, constantes.CINZA_ESCURO)

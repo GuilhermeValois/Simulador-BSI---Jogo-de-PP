@@ -257,20 +257,22 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     if acertos >= len(disciplinas)/2:
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes = disciplinas_que_reprovou
+            jogador.moedas += moedas
             estado = popup.pagar_pendencias(tela,jogador)
             if periodo == 8: jogador.situacao = 'concluindo_curso'
-            if jogador.periodo < 8:jogador.passou_de_periodo()
-            jogador.moedas += moedas
+            if jogador.periodo < 8:
+                jogador.passou_de_periodo()
+            
             jogador.periodo_desbloqueado += 1
-            estado = 'tela de escolha'
             return estado
         else:
             if periodo == 8: 
                 jogador.situacao = 'formado'
                 utils.gerar_certificado(jogador.nome)
-            if jogador.periodo < 8:jogador.passou_de_periodo()
+            if jogador.periodo < 8:
+                jogador.passou_de_periodo()
             jogador.disciplinas_pendentes = []
-            jogador.moedas = moedas
+            jogador.moedas += moedas
             jogador.periodo_desbloqueado += 1
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado

@@ -30,7 +30,6 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     disciplinas_que_reprovou = [] 
     moedas = 0
     jogador.energia = jogador.energia_max
-    decorrido = 0
     
     tempo_acabou = False
     
@@ -119,10 +118,10 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 segundos_decorridos = restante
                 if (jogador.energia - 2) < 0:
                     jogador.energia = 0
-                    decorrido +=1
+                    segundos_decorridos +=1
                 else:
                     jogador.energia -= 2
-                    decorrido+=1
+                    segundos_decorridos+=1
             if jogador.energia == 0:
                 jogador.reprovacoes += 1
                 estado = popup.mostrar_reprovacao(tela,jogador)     

@@ -99,12 +99,16 @@ def mostrar_reprovacao(tela,jogador):
 def pagar_pendencias(tela,jogador):
 
     pygame.init()
+
+    fundo = pygame.image.load("imagens/fundo_jogo.png")
+    fundo = pygame.transform.scale(fundo, (1280, 720))
     fonte = pygame.font.SysFont(None, 22)
     fonte_mensagem = pygame.font.SysFont(None, 50)
     fonte_titulo = pygame.font.SysFont(None, 50)
     fonte_botao = pygame.font.SysFont(None,40)
     pygame.display.set_caption("Aprova ou Reprova-Popup de Pendências")
     botoes_pendencias = []
+
     y = 250
     for disciplina in jogador.disciplinas_pendentes:
         botao = pygame.Rect(805, y-10, 120, 40)
@@ -143,21 +147,22 @@ def pagar_pendencias(tela,jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    estado = 'minigame'
-                    return estado
+                    jogador.periodo += 1
+                    return 'minigame'
 
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-        tela.fill(constantes.AZUL_CLARO)
-        pygame.draw.rect(tela,constantes.ROXO,botao_titulo,border_radius=30)
+        tela.fill(constantes.BRANCO)
+        pygame.draw.rect(tela,constantes.AMARELO,botao_titulo,border_radius=30)
         pygame.draw.rect(tela,constantes.PRETO,botao_titulo,2,border_radius=30)
         titulo = fonte_titulo.render("PAGAR PENDÊNCIAS", True, constantes.PRETO)
         tela.blit(titulo, (titulo.get_rect(center = (botao_titulo.center))))
+        tela.blit(fundo, (0, 0))
 
         mensagem = fonte_mensagem.render("Custo por pendência: 10 moedas",True,constantes.PRETO)
         tela.blit(mensagem, (mensagem.get_rect(center = (constantes.LARGURA//2,180))))
-        pygame.draw.rect(tela, constantes.VERDE, botao_voltar, border_radius=30)
+        pygame.draw.rect(tela, constantes.AMARELO, botao_voltar, border_radius=30)
         pygame.draw.rect(tela, constantes.PRETO, botao_voltar, 2, border_radius=30)
 
         pygame.draw.rect(tela, constantes.AMARELO, botao_avancar, border_radius=30)
@@ -183,9 +188,9 @@ def pagar_pendencias(tela,jogador):
                 texto_botao = fonte.render("Pagar", True, constantes.PRETO)
                 tela.blit(texto_botao, (texto_botao.get_rect(center=(botao.center))))
                 y += 60
-        pygame.draw.rect(tela,constantes.VERDE,botao_moedas,border_radius=30)
+        pygame.draw.rect(tela,constantes.AMARELO,botao_moedas,border_radius=30)
         pygame.draw.rect(tela,constantes.PRETO,botao_moedas,2,border_radius=30)
-        quantidade_moedas = fonte.render(f"MOEDAS DISPONÍVEIS: {jogador.moedas}", True, constantes.AMARELO)
+        quantidade_moedas = fonte.render(f"MOEDAS DISPONÍVEIS: {jogador.moedas}", True, constantes.PRETO)
         tela.blit(quantidade_moedas, (quantidade_moedas.get_rect(center = (botao_moedas.center))))
         if len(botoes_pendencias) == 0:
             pygame.draw.rect(tela,constantes.AMARELO,botao_mensagem,border_radius=30)
@@ -241,15 +246,15 @@ def finalizando_curso(tela,jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    estado = 'minigame'
-                    return estado
+                    jogador.periodo += 1
+                    return 'minigame'
 
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
         tela.fill(constantes.AZUL_CLARO)
-        pygame.draw.rect(tela,constantes.ROXO,botao_titulo,border_radius=30)
-        pygame.draw.rect(tela,constantes.PRETO,botao_titulo,2,border_radius=30)
+        pygame.draw.rect(tela,constantes.AMARELO,botao_titulo,border_radius=30)
+        pygame.draw.rect(tela,constantes.BRANCO,botao_titulo,2,border_radius=30)
         
         titulo = fonte_titulo.render("FINALIZAÇÃO DO CURSO",True,constantes.PRETO)
         tela.blit(titulo, (titulo.get_rect(center = (botao_titulo.center))))
@@ -279,18 +284,18 @@ def finalizando_curso(tela,jogador):
                 tela.blit(texto, (355, y))
 
                 
-                pygame.draw.rect(tela, constantes.VERDE, botao,border_radius=30)
+                pygame.draw.rect(tela, constantes.PRETO, botao,border_radius=30)
 
                 texto_botao = fonte.render("Pagar", True, constantes.PRETO)
                 tela.blit(texto_botao, (texto_botao.get_rect(center=(botao.center))))
                 y += 60
-        pygame.draw.rect(tela,constantes.VERDE,botao_moedas,border_radius=30)
+        pygame.draw.rect(tela,constantes.AMARELO,botao_moedas,border_radius=30)
         pygame.draw.rect(tela,constantes.PRETO,botao_moedas,2,border_radius=30)
-        quantidade_moedas = fonte.render(f"MOEDAS DISPONÍVEIS: {jogador.moedas}", True, constantes.AMARELO)
+        quantidade_moedas = fonte.render(f"MOEDAS DISPONÍVEIS: {jogador.moedas}", True, constantes.PRETO)
         tela.blit(quantidade_moedas, (quantidade_moedas.get_rect(center = (botao_moedas.center))))
         if len(botoes_pendencias) == 0:
             pygame.draw.rect(tela,constantes.AMARELO,botao_mensagem,border_radius=30)
             pygame.draw.rect(tela,constantes.PRETO,botao_mensagem,2,border_radius=30)
             mensagem = fonte_mensagem.render("TODAS AS PENDÊNCIAS FORAM PAGAS", True, constantes.PRETO)
             tela.blit(mensagem, (mensagem.get_rect(center = (constantes.LARGURA//2,constantes.ALTURA//2))))
-        pygame.display.flip()      
+        pygame.display.flip()

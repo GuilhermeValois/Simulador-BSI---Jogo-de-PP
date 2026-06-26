@@ -30,7 +30,6 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     disciplinas_que_reprovou = [] 
     moedas = 0
     jogador.energia = jogador.energia_max
-    decorrido = 0
     
     tempo_acabou = False
     
@@ -113,16 +112,15 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if restante <= 0:
                 tempo_acabou = True
                 
-            texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.BRANCO)
-            
-            if restante != segundos_decorridos:
-                segundos_decorridos = restante
+            texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.PRETO)
+            tempo_anterior = segundos - segundos_decorridos
+            if restante != tempo_anterior:
                 if (jogador.energia - 2) < 0:
                     jogador.energia = 0
-                    decorrido +=1
+                    segundos_decorridos +=1
                 else:
                     jogador.energia -= 2
-                    decorrido+=1
+                    segundos_decorridos+=1
             if jogador.energia == 0:
                 jogador.reprovacoes += 1
                 estado = popup.mostrar_reprovacao(tela,jogador)     
@@ -269,7 +267,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 utils.gerar_certificado(jogador.nome)
             if jogador.periodo < 8:jogador.passou_de_periodo()
             jogador.disciplinas_pendentes = []
-            jogador.moeda = moedas
+            jogador.moedas = moedas
             jogador.periodo_desbloqueado += 1
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado

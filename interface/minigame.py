@@ -6,15 +6,15 @@ import random
 caca_palavras = {
     1: ["determinacao", "logica", "estudo", "jogo"],
     2: ["programar", "papel", "avaliacao", "departamento"],
-    3: ["ler", "python", "sustentavel", "escrita", "professor"],
-    4: ["nota", "boletim", "principal", "material", "universidade"],
-    5: ["vaga", "conjunto", "aluno", "bolsa", "funcao"],
-    6: ["gestao", "computador", "aprova", "amizade", "ferias"],
-    7: ["reprova", "comunidade", "opcao", "curso", "sistema", "computacao"],
-    8: ["aula", "administracao", "prova", "assunto", "questao", "cota"]
+    3: ["ler", "python", "sustentavel", "escrita"],
+    4: ["nota", "boletim", "principal", "material"],
+    5: ["vaga", "conjunto", "aluno", "bolsa"],
+    6: ["gestao", "computador", "aprova", "amizade"],
+    7: ["reprova", "comunidade", "opcao", "curso"],
+    8: ["aula", "administracao", "prova", "assunto"]
 }
 
-direcoes = ["horizontal", "vertical", "diagonal"]
+direcoes = ["horizontal", "vertical"]
 
 def gerar_grade(periodo, tamanho=15):
 
@@ -22,25 +22,24 @@ def gerar_grade(periodo, tamanho=15):
     grade = [["" for _ in range(tamanho)] for _ in range(tamanho)]
 
     for palavra in palavras:
-        direcao = random.choice(direcoes)
+        colocado = False
+        while not colocado:
+            direcao = random.choice(direcoes)
 
-        if direcao == "horizontal":
-            linha = random.randint(0, tamanho - 1)
-            coluna = random.randint(0, tamanho-len(palavra))
-            for i, letra in enumerate(palavra.upper()):
-                grade[linha][coluna + i] = letra
-        
-        elif direcao == "vertical":
-            linha = random.randint(0, tamanho - len(palavra))
-            coluna = random.randint(0, tamanho-1)
-            for i, letra in enumerate(palavra.upper()):
-                grade[linha + i][coluna] = letra
-
-        elif direcao == "diagonal":
-            linha = random.randint(0, tamanho - len(palavra))
-            coluna = random.randint(0, tamanho-len(palavra))
-            for i, letra in enumerate(palavra.upper()):
-                grade[linha + i][coluna + i] = letra
+            if direcao == "horizontal":
+                linha = random.randint(0, tamanho - 1)
+                coluna = random.randint(0, tamanho-len(palavra))
+                if all(grade[linha][coluna + i] in ["", palavra[i].upper()] for i in range(len(palavra))):
+                    for i, letra in enumerate(palavra.upper()):
+                        grade[linha][coluna + i] = letra
+                    colocado = True
+            
+            elif direcao == "vertical":
+                linha = random.randint(0, tamanho - len(palavra))
+                coluna = random.randint(0, tamanho-1)
+                if all(grade[linha + i][coluna] in ["", palavra[i].upper()] for i in range(len(palavra))):
+                    for i, letra in enumerate(palavra.upper()):
+                        grade[linha + i][coluna] = letra
     
     for i in range(tamanho):
         for j in range(tamanho):
@@ -49,7 +48,7 @@ def gerar_grade(periodo, tamanho=15):
     
     return grade
 
-def desenhar_grade(tela, grade, fonte_texto, offset_x, offset_y, largura_celula, altura_celula, selecionando):
+def desenhar_grade(tela, grade, fonte_texto, offset_x, offset_y, largura_celula, altura_celula, selecionando, palavras_coords):
 
     largura_grade = len(grade[0]) * largura_celula
     altura_grade = len(grade) * altura_celula
@@ -65,9 +64,11 @@ def desenhar_grade(tela, grade, fonte_texto, offset_x, offset_y, largura_celula,
             # Célula selecionada
             if (i, j) in selecionando:
                 pygame.draw.rect(tela, constantes.AMARELO, rect)
+            elif any ((i, j) in coords for coords in palavras_coords):
+                pygame.draw.rect(tela, constantes.VERDE, rect)
             else:
                 pygame.draw.rect(tela, constantes.BRANCO, rect)
-                
+
             pygame.draw.rect(tela, constantes.PRETO, rect, 2)
             texto = fonte_texto.render(letra, True, constantes.PRETO)
             tela.blit(texto, texto.get_rect(center=rect.center))
@@ -79,11 +80,13 @@ def minigame(tela, jogador, periodo):
     fonte_titulo = pygame.font.SysFont("arial black", 40, bold=True)
     fonte_texto = pygame.font.SysFont("arial", 40, bold=True)
     fonte_emoji = pygame.font.SysFont("Segoe UI Emoji", 40)
+    fonte_lista = pygame.font.SysFont("arial", 15, bold=True)
 
     palavras = caca_palavras[periodo]
     grade = gerar_grade(periodo)
     palavras_encontradas = []
     selecionando = []
+    palavras_coords = []
 
     # Tamanhos
     largura_celula = 60
@@ -120,15 +123,16 @@ def minigame(tela, jogador, periodo):
                         all(c == colunas[0] for c in colunas)or
                         all(l - linhas[0] == c - colunas[0] for l, c in selecionando)):
 
-                        palavra_formada = "".join(selecionando).lower()
+                        palavra_formada = "".join(grade[l][c] for l, c in selecionando).lower()
                         if palavra_formada in palavras and palavra_formada not in palavras_encontradas:
                             palavras_encontradas.append(palavra_formada)
+                            palavras_coords.append(list(selecionando))
                             print(f"Encontrou: {palavra_formada}")
                 selecionando.clear()
                 
         
         tela.blit(fundo, (0, 0))
-        desenhar_grade(tela, grade, fonte_texto, offset_x, offset_y, largura_celula, altura_celula, selecionando)
+        desenhar_grade(tela, grade, fonte_texto, offset_x, offset_y, largura_celula, altura_celula, selecionando, palavras_coords)
 
         texto_titulo_sombra = fonte_titulo.render("CAÇA-PALAVRAS", True, constantes.CINZA_ESCURO)
         texto_titulo = fonte_titulo.render("CAÇA-PALAVRAS", True, constantes.AMARELO)
@@ -142,6 +146,16 @@ def minigame(tela, jogador, periodo):
 
         texto = fonte_texto.render(f"{len(palavras_encontradas)} / {len(palavras)} encontradas", True, constantes.BRANCO)
         tela.blit(texto, (50, 50))
+
+        texto_lista = fonte_lista.render("Palavras:", True, constantes.AMARELO)
+        tela.blit(texto_lista, (40, 150))
+
+        for idx, palavra in enumerate(palavras):
+            cor = constantes.BRANCO
+            if palavra in palavras_encontradas:
+                cor = constantes.VERDE
+            texto_palavra = fonte_lista.render(palavra.upper(), True, cor)
+            tela.blit(texto_palavra, (40, 200 + idx * 40))
 
         pygame.display.flip()
 

@@ -91,7 +91,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             fundo = pygame.image.load("imagens/fundo_jogo.png")
             fundo = pygame.transform.scale(fundo, (1280, 720))
             tela.blit(fundo,(0,0))
-            segundos = 10
+            segundos = 20
             restante = segundos - (pygame.time.get_ticks() - inicio) // 1000
 
             if restante <= 0:

@@ -5,7 +5,7 @@ from classes.pergunta import Pergunta
 from colorama import Fore, Style
 import os
 import time, sys
-from interface import constantes, tela_inicial, tela_escolha, tela_pergunta, minigame
+from interface import constantes, tela_inicial, tela_escolha, tela_pergunta, minigame, popup
 import pygame
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
@@ -117,8 +117,16 @@ def jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas):
         if estado == 'tela_pergunta':
             estado = tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas,periodo)
             periodo = None
-        
-'''     
+        if estado == 'mostrar_aprovacao':
+            estado = popup.mostrar_aprovacao(tela,jogador)
+        if estado == 'mostrar_reprovacao':
+            estado = popup.mostrar_reprovacao(tela,jogador)
+        if estado == 'pagar_pendencias':
+            estado = popup.pagar_pendencias(tela,jogador)
+        if estado == 'finalizando_curso':
+            estado = popup.finalizando_curso(tela,jogador)
+
+'''   
     reprovacao = 0
     while jogador.periodo <= 8:
         if reprovacao == 3:

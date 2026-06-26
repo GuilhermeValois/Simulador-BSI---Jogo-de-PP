@@ -25,7 +25,7 @@ def mostrar_aprovacao(tela, jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    estado = 'tela_pergunta'
+                    estado = 'minigame'
                     return estado
         
         tela.fill(constantes.AZUL_CLARO)
@@ -144,7 +144,7 @@ def pagar_pendencias(tela,jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    estado = 'tela_pergunta'
+                    estado = 'minigame'
                     return estado
 
             if evento.type == pygame.QUIT:
@@ -242,7 +242,7 @@ def finalizando_curso(tela,jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    estado = 'tela_pergunta'
+                    estado = 'minigame'
                     return estado
 
             if evento.type == pygame.QUIT:

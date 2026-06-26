@@ -52,7 +52,7 @@ def tela_escolha(tela,jogador):
                         if rect_scroll.collidepoint(evento.pos):
                             if i <= jogador.periodo_desbloqueado:
                                 print(f"Período escolhido: {i}º")
-                                return i, "minigame"
+                                return i, 'minigame'
                             else:
                                 print("Período bloqueado")
 

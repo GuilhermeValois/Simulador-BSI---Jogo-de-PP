@@ -5,7 +5,7 @@ from classes.pergunta import Pergunta
 from colorama import Fore, Style
 import os
 import time, sys
-from interface import constantes, tela_inicial, tela_escolha, tela_pergunta
+from interface import constantes, tela_inicial, tela_escolha, tela_pergunta, minigame
 import pygame
 
 def jogar(jogador, lista_disciplinas, perguntas_por_categoria, perguntas_tcc):
@@ -112,6 +112,8 @@ def jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas):
                 retorno = tela_escolha.tela_escolha(tela,jogador)
                 periodo = retorno[0]
                 estado = retorno[1]
+        if estado == 'minigame':
+            estado = minigame.minigame(tela, jogador, periodo)
         if estado == 'tela_pergunta':
             estado = tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas,periodo)
             periodo = None

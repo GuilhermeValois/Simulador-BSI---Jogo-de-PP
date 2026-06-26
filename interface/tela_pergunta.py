@@ -261,7 +261,8 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if periodo == 8: jogador.situacao = 'concluindo_curso'
             if jogador.periodo < 8:jogador.passou_de_periodo()
             jogador.moeda += moedas
-            
+            jogador.periodo_desbloqueado += 1
+            estado = 'tela de escolha'
             return estado
         else:
             if periodo == 8: 
@@ -270,6 +271,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if jogador.periodo < 8:jogador.passou_de_periodo()
             jogador.disciplinas_pendentes = []
             jogador.moeda = moedas
+            jogador.periodo_desbloqueado += 1
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado
     else:

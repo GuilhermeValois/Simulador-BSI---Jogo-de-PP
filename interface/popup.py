@@ -2,7 +2,7 @@ from interface import constantes
 import pygame
 import sys
 
-def mostrar_aprovacao(tela,jogador):
+def mostrar_aprovacao(tela, jogador):
     pygame.init()
     pygame.display.set_caption("Aprova ou Reprova-Popup de aprovação")
     popup = pygame.Rect(465,200,350,120)

@@ -113,7 +113,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if restante <= 0:
                 tempo_acabou = True
                 
-            texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.PRETO)
+            texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.BRANCO)
             
             if restante != segundos_decorridos:
                 segundos_decorridos = restante
@@ -128,21 +128,18 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 estado = popup.mostrar_reprovacao(tela,jogador)     
                 return estado
 
-            tela.blit(texto,texto.get_rect(center=(130, 20)))
+            tela.blit(texto,texto.get_rect(center=(130, 40)))
         
-            texto_disciplina = fonte_disciplina.render(f"Disciplina: {disciplina.nome}",True,constantes.PRETO)
+            texto_disciplina = fonte_disciplina.render(f"Disciplina: {disciplina.nome}",True,constantes.AMARELO)
             tela.blit(texto_disciplina, (texto_disciplina.get_rect(center=(1280//2, 80))))
 
-            nome_jogador = fonte.render(f"Aluno: {jogador.nome}", True, constantes.PRETO)
-            tela.blit(nome_jogador, (nome_jogador.get_rect(center=(1280//2, 120))))
-
-            jogador_periodo = fonte.render(f"Período: {jogador.periodo}", True, constantes.PRETO)
+            jogador_periodo = fonte.render(f"Período: {jogador.periodo}", True, constantes.BRANCO)
             tela.blit(jogador_periodo, (jogador_periodo.get_rect(center=(1280//2, 150))))
 
-            quantidade_moedas = fonte.render(f"MOEDAS: {moedas}", True, constantes.AMARELO)
-            tela.blit(quantidade_moedas,(1150,20))
+            quantidade_moedas = fonte.render(f"{moedas} moedas", True, constantes.AMARELO)
+            tela.blit(quantidade_moedas,(1150,40))
 
-            energia = fonte.render(f"ENERGIA: {jogador.energia}/{jogador.energia_max}",True, constantes.PRETO)
+            energia = fonte.render(f"ENERGIA: {jogador.energia}/{jogador.energia_max}",True, constantes.BRANCO)
             tela.blit(energia,(energia.get_rect(center = (450,35))))
             pygame.draw.rect(tela,constantes.VERMELHO,espaco_energia,border_radius=30)
             largura_energia = (jogador.energia / jogador.energia_max) * 200
@@ -154,7 +151,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             linhas = utils.quebrar_texto(pergunta.enunciado,fonte,1000)
             y = 180
             for linha in linhas:
-                texto = fonte.render(linha,True,constantes.PRETO)
+                texto = fonte.render(linha,True,constantes.BRANCO)
                 tela.blit(texto, (texto.get_rect(center = (1280//2,y))))
                 y += 35
 
@@ -259,10 +256,10 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     if acertos >= len(disciplinas)/2:
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes = disciplinas_que_reprovou
-            estado = popup.pagar_pendencias()
+            estado = popup.pagar_pendencias(tela,jogador)
             if periodo == 8: jogador.situacao = 'concluindo_curso'
             if jogador.periodo < 8:jogador.passou_de_periodo()
-            jogador.moeda += moedas
+            jogador.moedas += moedas
             jogador.periodo_desbloqueado += 1
             estado = 'tela de escolha'
             return estado

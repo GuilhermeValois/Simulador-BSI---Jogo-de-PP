@@ -25,8 +25,8 @@ def mostrar_aprovacao(tela, jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    estado = 'minigame'
-                    return estado
+                    jogador.periodo += 1
+                    return 'minigame'
         
         tela.fill(constantes.AZUL_CLARO)
         fundo = pygame.image.load("imagens/fundo_aprovado.png")

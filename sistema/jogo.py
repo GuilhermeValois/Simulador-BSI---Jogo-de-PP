@@ -113,7 +113,7 @@ def jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas):
                 periodo = retorno[0]
                 estado = retorno[1]
         if estado == 'minigame':
-            estado = minigame.minigame(tela, jogador, periodo)
+            estado = minigame.minigame(tela, jogador, jogador.periodo)
         if estado == 'tela_pergunta':
             estado = tela_pergunta.mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas,periodo)
             periodo = None

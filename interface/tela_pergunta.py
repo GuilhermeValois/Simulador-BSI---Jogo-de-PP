@@ -30,6 +30,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     disciplinas_que_reprovou = [] 
     moedas = 0
     jogador.energia = jogador.energia_max
+    decorrido = 0
     
     tempo_acabou = False
     
@@ -113,8 +114,9 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 tempo_acabou = True
                 
             texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.PRETO)
-            tempo_anterior = segundos - segundos_decorridos
-            if restante != tempo_anterior:
+            
+            if restante != segundos_decorridos:
+                segundos_decorridos = restante
                 if (jogador.energia - 2) < 0:
                     jogador.energia = 0
                     decorrido +=1

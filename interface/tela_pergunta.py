@@ -29,6 +29,8 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     acertos = 0
     disciplinas_que_reprovou = [] 
     moedas = 0
+    jogador.energia = jogador.energia_max
+    
     tempo_acabou = False
     
     if periodo == None:
@@ -43,6 +45,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
         popup.finalizando_curso
         disciplinas = jogador.disciplinas_pendentes
     for disciplina in disciplinas:
+        segundos_decorridos = 0
         resposta = None
         pergunta = disciplina.sortear_pergunta_da_disciplina(perguntas_por_categoria)
         inicio = pygame.time.get_ticks()
@@ -75,6 +78,18 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             
             if resposta in ['A','B','C','D']: 
                 if resposta == pergunta.resposta:
+                    if restante >= 15:
+                        jogador.energia += 20
+                        if jogador.energia >= jogador.energia_max:
+                            jogador.energia = jogador.energia_max
+                    elif restante >=10:
+                        jogador.energia += 10
+                        if jogador.energia >= jogador.energia_max:
+                            jogador.energia = jogador.energia_max
+                    else:
+                        jogador.energia += 5
+                        if jogador.energia >= jogador.energia_max:
+                            jogador.energia = jogador.energia_max
                     mensagem = fonte.render("RESPOSTA CORRETA",True,constantes.VERDE)
                     acertos += 1
                     if disciplina not in jogador.disciplinas_pendentes:
@@ -98,6 +113,18 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 tempo_acabou = True
                 
             texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.PRETO)
+            tempo_anterior = segundos - segundos_decorridos
+            if restante != tempo_anterior:
+                if (jogador.energia - 2) < 0:
+                    jogador.energia = 0
+                    decorrido +=1
+                else:
+                    jogador.energia -= 2
+                    decorrido+=1
+            if jogador.energia == 0:
+                jogador.reprovacoes += 1
+                estado = popup.mostrar_reprovacao(tela,jogador)     
+                return estado
 
             tela.blit(texto,texto.get_rect(center=(130, 20)))
         
@@ -113,8 +140,8 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             quantidade_moedas = fonte.render(f"MOEDAS: {moedas}", True, constantes.AMARELO)
             tela.blit(quantidade_moedas,(1150,20))
 
-            energia = fonte.render(f"ENERGIA: {jogador.energia}/{jogador.energia_max}",True, constantes.AZUL_CLARO)
-            tela.blit(energia,(energia.get_rect(center = (1280//2,40))))
+            energia = fonte.render(f"ENERGIA: {jogador.energia}/{jogador.energia_max}",True, constantes.PRETO)
+            tela.blit(energia,(energia.get_rect(center = (450,35))))
             pygame.draw.rect(tela,constantes.VERMELHO,espaco_energia,border_radius=30)
             largura_energia = (jogador.energia / jogador.energia_max) * 200
             pygame.draw.rect(tela,constantes.VERDE,(540, 20, largura_energia, 30),border_radius=30)

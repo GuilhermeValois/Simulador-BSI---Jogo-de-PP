@@ -257,7 +257,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     if acertos >= len(disciplinas)/2:
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes = disciplinas_que_reprovou
-            estado = popup.pagar_pendencias()
+            estado = popup.pagar_pendencias(tela,jogador)
             if periodo == 8: jogador.situacao = 'concluindo_curso'
             if jogador.periodo < 8:jogador.passou_de_periodo()
             jogador.moeda += moedas

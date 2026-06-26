@@ -113,9 +113,8 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 tempo_acabou = True
                 
             texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.PRETO)
-            
-            if restante != segundos_decorridos:
-                segundos_decorridos = restante
+            tempo_anterior = segundos - segundos_decorridos
+            if restante != tempo_anterior:
                 if (jogador.energia - 2) < 0:
                     jogador.energia = 0
                     segundos_decorridos +=1

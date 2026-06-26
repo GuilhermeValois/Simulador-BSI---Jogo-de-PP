@@ -25,7 +25,6 @@ def mostrar_aprovacao(tela, jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    jogador.periodo += 1
                     return 'minigame'
         
         tela.fill(constantes.AZUL_CLARO)

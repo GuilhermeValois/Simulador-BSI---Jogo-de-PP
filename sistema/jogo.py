@@ -100,8 +100,10 @@ def jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas):
     estado = 'tela_inicial'
     tela = pygame.display.set_mode((constantes.LARGURA,constantes.ALTURA))
     periodo = None
+    clock = pygame.time.Clock()
     while rodando:
 
+        clock.tick(60)
         if estado == 'tela_inicial':
             retorno = tela_inicial.tela_inicial(tela)
             nome = retorno[0]
@@ -125,6 +127,8 @@ def jogar_com_interface(tela,perguntas_por_categoria,lista_disciplinas):
             estado = popup.pagar_pendencias(tela,jogador)
         if estado == 'finalizando_curso':
             estado = popup.finalizando_curso(tela,jogador)
+        if estado == 'sair':
+            rodando =  False
 
 '''   
     reprovacao = 0

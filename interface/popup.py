@@ -147,7 +147,7 @@ def pagar_pendencias(tela,jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    jogador.periodo += 1
+                    jogador.passou_de_periodo()
                     return 'minigame'
 
             if evento.type == pygame.QUIT:
@@ -246,7 +246,7 @@ def finalizando_curso(tela,jogador):
                     estado = 'tela_escolha'
                     return estado
                 if botao_avancar.collidepoint(evento.pos):
-                    jogador.periodo += 1
+                    jogador.passou_de_periodo()
                     return 'minigame'
 
             if evento.type == pygame.QUIT:

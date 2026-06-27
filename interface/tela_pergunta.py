@@ -257,7 +257,6 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if jogador.periodo < 8:
                 jogador.passou_de_periodo()
             
-            jogador.periodo_desbloqueado += 1
             return 'pagar_pendencias'
         else:
             if periodo == 8: 
@@ -267,7 +266,6 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                 jogador.passou_de_periodo()
             jogador.disciplinas_pendentes = []
             jogador.moedas += 10
-            jogador.periodo_desbloqueado += 1
             return 'mostrar_aprovacao'
     else:
         jogador.reprovacoes += 1   

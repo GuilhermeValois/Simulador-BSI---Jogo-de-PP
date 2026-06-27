@@ -15,7 +15,9 @@ class Jogador:
         self.disciplinas_pendentes = []
     
     def passou_de_periodo(self):
-        self.periodo += 1
+        if self.periodo < 8:
+            self.periodo += 1
+            self.periodo_desbloqueado = max(self.periodo_desbloqueado, self.periodo)
 
     def adicionar_pendencia(self, disciplina):
 

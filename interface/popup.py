@@ -1,6 +1,7 @@
 from interface import constantes
 import pygame
 import sys
+from sistema import utils
 
 def mostrar_aprovacao(tela, jogador):
     pygame.init()
@@ -294,8 +295,12 @@ def finalizando_curso(tela,jogador):
         quantidade_moedas = fonte.render(f"MOEDAS DISPONÍVEIS: {jogador.moedas}", True, constantes.PRETO)
         tela.blit(quantidade_moedas, (quantidade_moedas.get_rect(center = (botao_moedas.center))))
         if len(botoes_pendencias) == 0:
+            utils.gerar_certificado(jogador.nome)
             pygame.draw.rect(tela,constantes.AMARELO,botao_mensagem,border_radius=30)
             pygame.draw.rect(tela,constantes.PRETO,botao_mensagem,2,border_radius=30)
             mensagem = fonte_mensagem.render("TODAS AS PENDÊNCIAS FORAM PAGAS", True, constantes.PRETO)
             tela.blit(mensagem, (mensagem.get_rect(center = (constantes.LARGURA//2,constantes.ALTURA//2))))
+
+            return 'mostrar_aprovacao'
+        
         pygame.display.flip()

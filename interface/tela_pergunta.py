@@ -253,7 +253,9 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes = disciplinas_que_reprovou
             jogador.moedas += 10
-            if periodo == 8: jogador.situacao = 'concluindo_curso'
+            if periodo == 8: 
+                jogador.situacao = 'concluindo_curso'
+                utils.gerar_certificado(jogador.nome)
             if jogador.periodo < 8:
                 jogador.passou_de_periodo()
             

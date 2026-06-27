@@ -31,7 +31,6 @@ def tela_escolha(tela,jogador):
         fundo_periodo = pygame.transform.scale(fundo_periodo, (300, 300))
         imagem_periodos.append(fundo_periodo)
     
-    jogador.periodo_desbloqueado = 1
     scroll_y = 0
     limite_superior = 0
     limite_inferior = -((len(botoes)//3) * (altura_botao + espacamento_y) - 300 + 150)

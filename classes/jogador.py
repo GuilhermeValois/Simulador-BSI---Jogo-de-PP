@@ -5,6 +5,7 @@ class Jogador:
     def __init__(self, nome):
         self.nome = nome
         self.periodo = 1
+        self.periodo_desbloqueado = 1
         self.reprovacoes = 0
         self.moedas = 0
         self.energia = 100

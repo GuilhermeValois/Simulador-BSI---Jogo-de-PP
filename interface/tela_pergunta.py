@@ -28,7 +28,6 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     rodando = True   
     acertos = 0
     disciplinas_que_reprovou = [] 
-    jogador.moedas += 10
     jogador.energia = jogador.energia_max
     
     tempo_acabou = False
@@ -40,7 +39,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     
     disciplinas = utils.disciplina_por_periodo(lista_disciplinas, periodo_escolhido, jogador.nome)
     if len(jogador.disciplinas_pendentes) > 0 and jogador.situacao == 'cursando':
-        disciplinas.extend(jogador.disciplinas_pendente)
+        disciplinas.extend(jogador.disciplinas_pendentes)
     elif len(jogador.disciplinas_pendentes) > 0 and jogador.situacao == 'concluindo_curso':
         popup.finalizando_curso
         disciplinas = jogador.disciplinas_pendentes
@@ -122,9 +121,8 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                     jogador.energia -= 2
                     segundos_decorridos+=1
             if jogador.energia == 0:
-                jogador.reprovacoes += 1
-                estado = popup.mostrar_reprovacao(tela,jogador)     
-                return estado
+                jogador.reprovacoes += 1     
+                return 'mostrar_reprovacao'
 
             tela.blit(texto,texto.get_rect(center=(130, 40)))
         
@@ -255,13 +253,12 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes = disciplinas_que_reprovou
             jogador.moedas += 10
-            estado = popup.pagar_pendencias(tela,jogador)
             if periodo == 8: jogador.situacao = 'concluindo_curso'
             if jogador.periodo < 8:
                 jogador.passou_de_periodo()
             
             jogador.periodo_desbloqueado += 1
-            return estado
+            return 'pagar_pendencias'
         else:
             if periodo == 8: 
                 jogador.situacao = 'formado'
@@ -271,10 +268,8 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             jogador.disciplinas_pendentes = []
             jogador.moedas += 10
             jogador.periodo_desbloqueado += 1
-            estado = popup.mostrar_aprovacao(tela, jogador)
-            return estado
+            return 'mostrar_aprovacao'
     else:
-        jogador.reprovacoes += 1
-        estado = popup.mostrar_reprovacao(tela,jogador)     
-        return estado
+        jogador.reprovacoes += 1   
+        return 'mostrar_reprovacao'
     

@@ -160,6 +160,7 @@ def minigame(tela, jogador, periodo):
         pygame.display.flip()
 
         if len(palavras_encontradas) == len(palavras):
+            jogador.moedas += 10
             return 'tela_pergunta'
 
 def selecionar_letras(pos, grade, palavras_encontradas, palavras, offset_x, offset_y, largura_celula, altura_celula, selecionando):

@@ -4,9 +4,9 @@
 
 O **Simulador BSI** é um jogo desenvolvido em Python que simula a trajetória de um estudante do curso de **Bacharelado em Sistemas de Informação (BSI)** ao longo dos períodos da graduação.
 
-Durante a partida, o jogador avança pelos períodos do curso respondendo perguntas relacionadas às áreas de conhecimento presentes na matriz curricular de BSI, como Programação, Banco de Dados, Matemática e Lógica, Infraestrutura, Gestão e Sistemas de Informação.
+Durante a partida, o jogador avança pelos períodos do curso realizando caça-palavra e respondendo perguntas relacionadas às áreas de conhecimento presentes na matriz curricular de BSI, como Programação, Banco de Dados, Matemática e Lógica, Infraestrutura, Gestão e Sistemas de Informação.
 
-Cada disciplina está associada a uma categoria de perguntas. Ao cursar uma disciplina, o jogador deve responder uma questão sorteada da área correspondente. Caso erre, a disciplina se torna uma pendência que deverá ser paga posteriormente. O objetivo é concluir todos os períodos, quitar possíveis pendências e, ao final do curso, realizar e defender o TCC para conquistar a graduação.
+Cada disciplina está associada a uma categoria de perguntas. Ao cursar uma disciplina, o jogador deve responder uma questão sorteada da área correspondente. Caso erre, a disciplina se torna uma pendência que deverá ser paga posteriormente. O objetivo é concluir todos os períodos, quitar possíveis pendências e, ao final do curso, receber um certificado de conclusão.
 
 ---
 
@@ -23,12 +23,14 @@ Cada disciplina está associada a uma categoria de perguntas. Ao cursar uma disc
 
 * Cadastro do nome do jogador.
 * Progressão pelos períodos do curso.
+* Completar o minigame de caça-palavras
 * Sorteio de perguntas por categoria.
+* Controle da energia do jogador ao responder as perguntas
+* Cronômetro para o jogador responder o mais rápido possível
 * Sistema de aprovação e reprovação.
 * Controle de disciplinas pendentes.
 * Possibilidade de pagar pendências em períodos posteriores.
 * Sistema de jubilamento após múltiplas reprovações.
-* Etapa final de TCC com perguntas específicas sobre desenvolvimento e elaboração de trabalhos acadêmicos.
 
 ---
 
@@ -36,38 +38,97 @@ Cada disciplina está associada a uma categoria de perguntas. Ao cursar uma disc
 
 ### Início do Jogo
 
-![Início](imagens_readme/tela_inicial.png)
+![Início](imagens_readme/tela_inicial_design.png)
 
-### Disciplinas de um Período
+### Minigame
 
-![Disciplinas](imagens_readme/disciplinas.png)
+![Minigame](imagens_readme/minigame.png)
 
-### Pergunta de uma Disciplina
+### Tela de escolha do período
 
-![Disciplinas](imagens_readme/pergunta.png)
+![Tela de escolha](imagens_readme/tela_escolha.png)
 
-### Defesa do TCC
+### Tela de disciplinas
 
-![TCC](imagens_readme/fazendo_tcc.png)
+![Disciplinas](imagens_readme/tela_pergunta.png)
+
+### Aprovado
+
+![Aprovado](imagens_readme/tela_aprovado.png)
+
+### Reprovado
+
+![Rerovado](imagens_readme/tela_reprovacao.png)
 
 ---
 
 ## 🗂️ Estrutura do Projeto
 
 ```text
-SIMULADOR-BSI---JOGO-DE-PP
-│
-├── data/
-│   ├── disciplina.json
-│   └── pergunta.json
-│
-├── disciplina.py
-├── jogador.py
-├── jogo.py
-├── main.py
-├── pergunta.py
-├── utils.py
-└── README.md
+Aprova ou Reprova---JOGO-DE-PP
+│JogoPP
+└── Simulador-BSI
+    ├── .gitignore
+    ├── classes
+    │   ├── disciplina.py
+    │   ├── jogador.py
+    │   ├── pergunta.py
+    │   └── __pycache__
+    │       ├── disciplina.cpython-313.pyc
+    │       ├── jogador.cpython-313.pyc
+    │       └── pergunta.cpython-313.pyc
+    ├── data
+    │   ├── disciplina.json
+    │   ├── pergunta.json
+    │   └── tcc.json
+    ├── fontes
+    │   └── Starborn.ttf
+    ├── imagens
+    │   ├── fundo_aprovado.png
+    │   ├── fundo_jogo.png
+    │   ├── fundo_periodos.png
+    │   ├── fundo_reprovado.png
+    │   └── fundo_tela_inicial.png
+    ├── imagens_readme
+    │   ├── disciplinas.png
+    │   ├── fazendo_tcc.png
+    │   ├── minigame.png
+    │   ├── pergunta.png
+    │   ├── tela de pergunta.png
+    │   ├── tela_aprovado.png
+    │   ├── tela_escolha.png
+    │   ├── tela_inicial.png
+    │   ├── tela_inicial_design.png
+    │   └── tela_reprovacao.png
+    ├── interface
+    │   ├── constantes.py
+    │   ├── minigame.py
+    │   ├── popup.py
+    │   ├── tela_escolha.py
+    │   ├── tela_inicial.py
+    │   ├── tela_pergunta.py
+    │   └── __pycache__
+    │       ├── constantes.cpython-313.pyc
+    │       ├── menu_inicial.cpython-313.pyc
+    │       ├── minigame.cpython-313.pyc
+    │       ├── popup.cpython-313.pyc
+    │       ├── tela_escolha.cpython-313.pyc
+    │       ├── tela_inicial.cpython-313.pyc
+    │       └── tela_pergunta.cpython-313.pyc
+    ├── main.py
+    ├── README.md
+    ├── sistema
+    │   ├── jogo.py
+    │   ├── utils.py
+    │   └── __pycache__
+    │       ├── jogo.cpython-313.pyc
+    │       └── utils.cpython-313.pyc
+    └── __pycache__
+        ├── disciplina.cpython-313.pyc
+        ├── jogador.cpython-313.pyc
+        ├── jogo.cpython-313.pyc
+        ├── pergunta.cpython-313.pyc
+        └── utils.cpython-313.pyc
 ```
 
 ### Responsabilidade dos módulos
@@ -79,6 +140,7 @@ SIMULADOR-BSI---JOGO-DE-PP
 * **pergunta.py** → Classe responsável pelas perguntas e validação das respostas.
 * **utils.py** → Funções auxiliares para carregamento de dados e utilidades gerais.
 * **data/** → Armazena os arquivos JSON contendo disciplinas e perguntas.
+* **interface/** → Armazena a interface e funcionalidades das telas.
 
 ---
 
@@ -88,6 +150,7 @@ SIMULADOR-BSI---JOGO-DE-PP
 * JSON
 * Programação Orientada a Objetos (POO)
 * Colorama
+* Pygame
 ---
 
 
@@ -135,6 +198,9 @@ pip install colorama
 
 - Relatório (Guilherme Vasconcellos Valois):
   [Link do Docs](https://docs.google.com/document/d/1poZHwngC5yi5qpTBt2vC4iwKmihuQIfDIJDbY6v9ZLM/edit?usp=sharing)
+
+- Vídeo (Júlia Galindo de Carvalho Cardoso):
+  [Link do vídeo](https://youtu.be/o1qojXAslC4)
 
 ---
 

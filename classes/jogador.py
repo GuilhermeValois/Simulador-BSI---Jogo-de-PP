@@ -6,12 +6,12 @@ class Jogador:
         self.nome = nome
         self.periodo = 1
         self.reprovacoes = 0
-        self.disciplinas_pendentes = []
         self.moedas = 0
         self.energia = 100
         self.energia_max = 100
         self.reprovacoes = 0
-        self.siuaca = 'cursando'
+        self.situacao = 'cursando'
+        self.disciplinas_pendentes = []
     
     def passou_de_periodo(self):
         self.periodo += 1

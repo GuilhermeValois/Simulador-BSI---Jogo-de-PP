@@ -28,7 +28,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     rodando = True   
     acertos = 0
     disciplinas_que_reprovou = [] 
-    moedas = 0
+    jogador.moedas += 10
     jogador.energia = jogador.energia_max
     
     tempo_acabou = False
@@ -93,7 +93,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
                     mensagem = fonte.render("RESPOSTA CORRETA",True,constantes.VERDE)
                     acertos += 1
                     if disciplina not in jogador.disciplinas_pendentes:
-                        moedas += 10
+                        jogador.moedas += 10
                     utils.contador(tela,fonte,3,mensagem)
                     break
                 else:
@@ -112,7 +112,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if restante <= 0:
                 tempo_acabou = True
                 
-            texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.PRETO)
+            texto = fonte.render(f"CRONÔMETRO: {restante}",True,constantes.BRANCO)
             tempo_anterior = segundos - segundos_decorridos
             if restante != tempo_anterior:
                 if (jogador.energia - 2) < 0:
@@ -134,7 +134,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             jogador_periodo = fonte.render(f"Período: {jogador.periodo}", True, constantes.BRANCO)
             tela.blit(jogador_periodo, (jogador_periodo.get_rect(center=(1280//2, 150))))
 
-            quantidade_moedas = fonte.render(f"{moedas} moedas", True, constantes.AMARELO)
+            quantidade_moedas = fonte.render(f"{jogador.moedas} moedas", True, constantes.AMARELO)
             tela.blit(quantidade_moedas,(1150,40))
 
             energia = fonte.render(f"ENERGIA: {jogador.energia}/{jogador.energia_max}",True, constantes.BRANCO)
@@ -254,7 +254,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
     if acertos >= len(disciplinas)/2:
         if len(disciplinas_que_reprovou) > 0:
             jogador.disciplinas_pendentes = disciplinas_que_reprovou
-            jogador.moedas += moedas
+            jogador.moedas += 10
             estado = popup.pagar_pendencias(tela,jogador)
             if periodo == 8: jogador.situacao = 'concluindo_curso'
             if jogador.periodo < 8:
@@ -269,7 +269,7 @@ def mostrar_tela_pergunta(jogador,tela,perguntas_por_categoria,lista_disciplinas
             if jogador.periodo < 8:
                 jogador.passou_de_periodo()
             jogador.disciplinas_pendentes = []
-            jogador.moedas += moedas
+            jogador.moedas += 10
             jogador.periodo_desbloqueado += 1
             estado = popup.mostrar_aprovacao(tela, jogador)
             return estado

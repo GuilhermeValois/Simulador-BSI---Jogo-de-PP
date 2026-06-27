@@ -94,7 +94,7 @@ Aprova ou Reprova---JOGO-DE-PP
     │   ├── fazendo_tcc.png
     │   ├── minigame.png
     │   ├── pergunta.png
-    │   ├── tela de pergunta.png
+    │   ├── tela_pergunta.png
     │   ├── tela_aprovado.png
     │   ├── tela_escolha.png
     │   ├── tela_inicial.png

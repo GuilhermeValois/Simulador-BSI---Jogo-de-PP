@@ -154,6 +154,12 @@ Aprova ou Reprova---JOGO-DE-PP
 * Interface
 ---
 
+## Funcionalidades da 2° Release
+
+* Caça-palavras
+* Cronômetro
+* Barra de energia
+---
 
 ## 🚀 Como Executar
 

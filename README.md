@@ -159,6 +159,8 @@ Aprova ou Reprova---JOGO-DE-PP
 * Caça-palavras
 * Cronômetro
 * Barra de energia
+* Sistema de moedas
+* Integração ao pygame
 ---
 
 ## 🚀 Como Executar
